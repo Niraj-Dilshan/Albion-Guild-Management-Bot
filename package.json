@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/Niraj-Dilshan/Albion-Guild-Management-Bot#readme",
   "dependencies": {
-    "discord.js": "^14.8.0"
+    "discord.js": "^14.8.0",
+    "dotenv": "^16.0.3"
   }
 }
