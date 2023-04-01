@@ -127,4 +127,4 @@ dist
 .pnp.*
 
 # Discord Bot Config
-.config.json
+config.json
