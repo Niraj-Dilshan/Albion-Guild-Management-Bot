@@ -11,12 +11,13 @@ module.exports = {
                 .setRequired(true)),
     async execute(interaction) {
         const newUsername = interaction.options.getString('username');
-        await axios.get(`https://gameinfo.albiononline.com/api/gameinfo/search?q=${newUsername}`)
+        await axios.get(`https://gameinfo-sgp.albiononline.com/api/gameinfo/search?q=${newUsername}`)
         .then(async (res) => {
           const result = res.data.players.filter(obj => obj.Name === newUsername);
             if (result.length > 0) {
                 await interaction.member.setNickname(newUsername);
                 await interaction.reply(`Username: ${newUsername} Has Been Successfully Registered`);
+                await interaction.guild.channels.cache.get('1099264156089192468').send(`Discord ID: <@${interaction.member.id}> -> Albion Username: ${newUsername}`);
             } else {
                 await interaction.reply(`Username: ${newUsername} \n Can't Find The Player In Albion Database`);
             }
