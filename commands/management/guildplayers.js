@@ -20,22 +20,35 @@ module.exports = {
         crystalLeague: member.CrystalLeague,
       }));
 
-      const message = data.map((member) => {
-        const caption = `Player: ${member.name}\nDeath Fame: ${member.deathFame}\nKill Fame: ${member.killFame}\nFame Ratio: ${member.fameRatio}\nPvE Total: ${member.pveTotal}\nGathering Total: ${member.gatheringTotal}\nCrafting Total: ${member.craftingTotal}\nCrystal League: ${member.crystalLeague}`;
-        return caption;
-      });
+      const date = new Date().toISOString().slice(0, 10);
+      const fileName = `GuildMembers${date}.txt`;
 
-      const filename = 'GuildPlayers.txt';
-      fs.writeFileSync(filename, message.join('\n\n'));
+      const sentPlayers = new Set();
+      const stream = fs.createWriteStream(fileName);
+      
+      for (const player of data) {
+        if (sentPlayers.has(player.name)) {
+          continue; // skip players that have already been processed
+        }
+        
+        const message = `Name: ${player.name}\nDeath Fame: ${player.deathFame}\nKill Fame: ${player.killFame}\nFame Ratio: ${player.fameRatio}\nPvE Total: ${player.pveTotal}\nGathering Total: ${player.gatheringTotal}\nCrafting Total: ${player.craftingTotal}\nCrystal League: ${player.crystalLeague}\n\n`;
+        stream.write(message);
+        sentPlayers.add(player.name);
+      }
+      
+      stream.end();
 
-      await interaction.reply({
+      await interaction.channel.send({
+        content: `Here is the list of all guild members as of ${date}`,
         files: [
           {
-            attachment: filename,
-            name: 'GuildPlayers.txt',
+            attachment: fileName,
+            name: fileName,
           },
         ],
       });
+
+      await interaction.reply('Player information has been sent to this channel.');
     } catch (error) {
       console.error(error);
       await interaction.reply('There was an error while fetching the data from the API.');
