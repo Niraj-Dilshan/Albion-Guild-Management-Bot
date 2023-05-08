@@ -27,7 +27,7 @@ module.exports = {
         killFame: member.KillFame,
         fameRatio: member.FameRatio,
         pveTotal: member.LifetimeStatistics.PvE.Total,
-        gatheringTotal: member.LifetimeStatistics.Gathering.Total,
+        gatheringTotal: member.LifetimeStatistics.Gathering.All.Total,
         craftingTotal: member.LifetimeStatistics.Crafting.Total,
         crystalLeague: member.CrystalLeague,
       };
