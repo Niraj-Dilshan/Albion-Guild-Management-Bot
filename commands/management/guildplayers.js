@@ -49,6 +49,13 @@ module.exports = {
       });
 
       await interaction.reply('Player information has been sent to this channel.');
+
+      // Delete the txt file after it has been sent.
+      fs.unlink(fileName, (err) => {
+        if (err) {
+          console.error(err);
+        }
+      });
     } catch (error) {
       console.error(error);
       await interaction.reply('There was an error while fetching the data from the API.');
