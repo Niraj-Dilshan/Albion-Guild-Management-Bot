@@ -1,4 +1,4 @@
-const { Client, Partials, Collection, GatewayIntentBits } = require('discord.js');
+const { Client, Events, Partials, Collection, GatewayIntentBits } = require('discord.js');
 const config = require('./config/config');
 const colors = require("colors");
 
