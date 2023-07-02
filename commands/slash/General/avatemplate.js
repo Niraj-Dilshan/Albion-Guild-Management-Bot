@@ -98,12 +98,6 @@ module.exports = {
             }
         };
 
-        // Call the fetchReactions function when the specified time is reached
-        const selectedDateObj = DateTime.fromFormat(dateTimeString, "yyyy-MM-dd hh:mm a");
-        const currentTime = DateTime.now();
-
-        const timeDifference = selectedDateObj.diff(currentTime, 'milliseconds').milliseconds;
-
         // Listen for the messageReactionAdd event and call the fetchReactions function
         client.on('messageReactionAdd', (reaction, user) => {
             if (reaction.message.id === message.id) {
