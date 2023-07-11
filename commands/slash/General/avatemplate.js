@@ -50,7 +50,8 @@ module.exports = {
         const name = interaction.options.getString("name");
         const date = interaction.options.getString("date");
         const time = interaction.options.getString("time");
-        const description = interaction.options.getString("description");
+        const descriptionInput = interaction.options.getString("description");
+        const description = descriptionInput.replace(/\\n/g, '\n').replace(/\\r/g, '\r');
         const image = interaction.options.getString("image");
 
         // Convert the provided date and time to a JavaScript Date object
@@ -89,7 +90,7 @@ module.exports = {
             embeds: [
               new EmbedBuilder()
                 .setTitle(name)
-                .setDescription(description)
+                .setDescription(`${description}`)
                 .setColor("Gold")
                 .setFooter({
                   text: "Made By Black-Rose Bot",
