@@ -30,11 +30,17 @@ module.exports = {
             description: "The description of the AvA",
             type: 3,
             required: true
+        },
+        {
+            name: "image",
+            description: "image link for the AvA(URL)",
+            type: 3,
+            required: true
         }
     ],
     permissions: {
         DEFAULT_MEMBER_PERMISSIONS: "SendMessages",
-        ROLES: [1068816615862440016]
+        ROLES: [1128358796239060992]
     },
     run: async (client, interaction, config, db) => {        
         const member = interaction.member;
@@ -45,6 +51,7 @@ module.exports = {
         const date = interaction.options.getString("date");
         const time = interaction.options.getString("time");
         const description = interaction.options.getString("description");
+        const image = interaction.options.getString("image");
 
         // Convert the provided date and time to a JavaScript Date object
         const dateTimeString = `${date} ${time}`;
@@ -90,9 +97,7 @@ module.exports = {
                     "https://cdn.discordapp.com/attachments/1073378626080362516/1076777453709688882/AdobeStock_555578592.jpeg",
                 })
                 .setTimestamp()
-                .setImage(
-                  "https://cdn.discordapp.com/attachments/1073378626080362516/1125048253000466453/blackrose4k.jpg"
-                )
+                .setImage(image)
                 .addFields([
                     {
                         name:"\u200B",
