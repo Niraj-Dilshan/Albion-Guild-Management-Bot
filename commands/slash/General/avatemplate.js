@@ -1,5 +1,6 @@
 const { EmbedBuilder } = require("discord.js");
 const { DateTime } = require("luxon");
+const { log, e } = require("mathjs");
 
 module.exports = {
     name: "avatemplate",
@@ -47,12 +48,14 @@ module.exports = {
 
         // Convert the provided date and time to a JavaScript Date object
         const dateTimeString = `${date} ${time}`;
-        const selectedDate = DateTime.fromFormat(dateTimeString, "yyyy-MM-dd HH:mm").toUTC();
+        const selectedDate = DateTime.fromFormat(dateTimeString, "yyyy-MM-dd HH:mm").toJSDate()
 
         // Format the date and time using the previous JavaScript code
-        const timestampCode = `<t:${Math.floor(selectedDate.toMillis() / 1000)}:R>`;
-        const formattedDate = `<t:${Math.floor(selectedDate.toMillis() / 1000)}:D>`;
-        const formattedTime = `<t:${Math.floor(selectedDate.toMillis() / 1000)}:T>`;
+        const ts = selectedDate.getTime().toString();
+        const timestampCode = `<t:${Math.floor(selectedDate.getTime() / 1000)}:R>`;
+
+        const formattedDate = `<t:${Math.floor(selectedDate.getTime() / 1000)}:D>`;// Format the date
+        const formattedTime = `<t:${Math.floor(selectedDate.getTime() / 1000)}:t>`;
 
         // declare emojis
         const maintankemoji = '918772807339474984';
