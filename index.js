@@ -2,7 +2,6 @@ const { Client, Events, Partials, Collection, GatewayIntentBits } = require('dis
 const config = require('./config/config');
 const colors = require("colors");
 
-// Creating a new client:
 const client = new Client({
   intents: [
     GatewayIntentBits.Guilds,
@@ -10,14 +9,18 @@ const client = new Client({
     GatewayIntentBits.GuildPresences,
     GatewayIntentBits.GuildMessageReactions,
     GatewayIntentBits.DirectMessages,
-    GatewayIntentBits.MessageContent
+    GatewayIntentBits.MessageContent,
+    GatewayIntentBits.GuildMembers,
+    GatewayIntentBits.GuildBans,
+
   ],
   partials: [
     Partials.Channel,
     Partials.Message,
     Partials.User,
     Partials.GuildMember,
-    Partials.Reaction
+    Partials.Reaction,
+    Partials.GuildScheduledEvent
   ],
   presence: {
     activities: [{
