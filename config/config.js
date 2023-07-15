@@ -3,13 +3,15 @@ const owner = process.env.OWNERS;
 const mongodb = process.env.MongoURI;
 const token = process.env.BotToken;
 const id = process.env.BotID;
+const raidleaders = process.env.RaidLeaders.split(",");
 
 module.exports = {
 
   Prefix: ">", // YOUR BOT PREFIX.
 
   Users: {
-    OWNERS: [owner] // THE BOT OWNERS ID.
+    OWNERS: owner, // THE BOT OWNERS ID.
+    RAIDLEADERS: raidleaders // THE RAID LEADERS ID.
   },
 
   Handlers: {

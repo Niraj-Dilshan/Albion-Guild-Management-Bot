@@ -1,6 +1,7 @@
 const { EmbedBuilder } = require("discord.js");
 const { DateTime } = require("luxon");
-const { log, e } = require("mathjs");
+const initializeDatabase = require('../../../database/database');
+const mongoose = initializeDatabase();
 
 module.exports = {
     name: "avatemplate",
@@ -36,23 +37,33 @@ module.exports = {
             description: "image link for the AvA(URL)",
             type: 3,
             required: true
+        },
+        {
+            name: "voicechanel",
+            description: "Voice chanel for the AvA",
+            type: 3,
+            required: true
         }
     ],
     permissions: {
-        DEFAULT_MEMBER_PERMISSIONS: "SendMessages",
-        ROLES: [1128358796239060992]
+        DEFAULT_MEMBER_PERMISSIONS: "SendMessages"
     },
-    run: async (client, interaction, config, db) => {        
+    run: async (client, interaction, config) => {        
         const member = interaction.member;
-        if (!member.roles.cache.has("1068816615862440016")) {
-            return interaction.reply("Only raidleaders can execute this command.");
-        }
+        if (!config.Users.RAIDLEADERS.some(role => member.roles.cache.has(role)) && member.id !== config.Users.OWNERS) {
+          console.log(config.Users.OWNERS)
+          return interaction.reply("Only raidleaders and the owner can execute this command.");
+      }
+        const guildid = interaction.guild.id;
         const name = interaction.options.getString("name");
         const date = interaction.options.getString("date");
         const time = interaction.options.getString("time");
         const descriptionInput = interaction.options.getString("description");
         const description = descriptionInput.replace(/\\n/g, '\n').replace(/\\r/g, '\r');
         const image = interaction.options.getString("image");
+        const voiceChannelName = interaction.options.getString("voicechanel");
+        const raidleader = interaction.guild.members.cache.get(member.id);
+        const raidleadername = raidleader ? (raidleader.nickname || raidleader.user.username) : "Unknown User";
 
         // Convert the provided date and time to a JavaScript Date object
         const dateTimeString = `${date} ${time}`;
@@ -61,8 +72,7 @@ module.exports = {
         // Format the date and time using the previous JavaScript code
         const ts = selectedDate.getTime().toString();
         const timestampCode = `<t:${Math.floor(selectedDate.getTime() / 1000)}:R>`;
-
-        const formattedDate = `<t:${Math.floor(selectedDate.getTime() / 1000)}:D>`;// Format the date
+        const formattedDate = `<t:${Math.floor(selectedDate.getTime() / 1000)}:D>`;
         const formattedTime = `<t:${Math.floor(selectedDate.getTime() / 1000)}:t>`;
 
         // declare emojis
@@ -76,7 +86,6 @@ module.exports = {
         const carvingemoji = '1125035809628762143';
         const realmbreakeremoji = '1125035797767258213';
         const spirithunteremoji = '1125035741173514302';
-        const specterjacketemoji = '1125035760492494848';
         const chillhowlemoji = '1125035788392988702';
         const greatfireemoji = '1125446279183486996';
         const xbowemoji = '1125035778796441700';
@@ -84,7 +93,7 @@ module.exports = {
         const scoutemoji = '1125430590116737056';
         const absenceemoji = '1125430596794077255';
 
-        const emojiarray = [maintankemoji, offtankemoji, greatarcaneemoji, onehandarcaneemoji, mainhealeremoji, ironrootemoji, shadowcalleremoji, carvingemoji, realmbreakeremoji, spirithunteremoji, specterjacketemoji, chillhowlemoji, greatfireemoji, xbowemoji, fillallemoji, scoutemoji, absenceemoji];
+        const emojiarray = [maintankemoji, offtankemoji, greatarcaneemoji, onehandarcaneemoji, mainhealeremoji, ironrootemoji, shadowcalleremoji, carvingemoji, realmbreakeremoji, spirithunteremoji, chillhowlemoji, greatfireemoji, xbowemoji, fillallemoji, scoutemoji, absenceemoji];
 
         interaction.reply({
             embeds: [
@@ -100,6 +109,21 @@ module.exports = {
                 .setTimestamp()
                 .setImage(image)
                 .addFields([
+                    {
+                        name: "\u200E",
+                        value: `🛡️ ${raidleadername}`,
+                        inline: true,
+                    },
+                    {
+                        name: "\u200E",
+                        value: "<:total:1129625110605737994> ** 0 **",
+                        inline: true,
+                    },
+                    {
+                        name: "\u200E",
+                        value: `🔊 ${voiceChannelName}`,
+                        inline: true,
+                    },
                     {
                         name:"\u200B",
                         value: `🗓️ ${formattedDate}`,
@@ -142,7 +166,7 @@ module.exports = {
                     },
                     {
                         name: " ",
-                        value: "\n\u200B",
+                        value: " ",
                         inline: false,
                     },
                     {
@@ -171,13 +195,8 @@ module.exports = {
                       inline: true,
                     },
                     {
-                      name: "<:specterjacket:1125035760492494848> __**SpecterJacket**__(0)",
-                      value: "\n\u200B",
-                      inline: true,
-                    },
-                    {
                       name: "<:chillhowl:1125035788392988702> __**Chillhowl**__(0)",
-                      value: " ",
+                      value: "\n\u200B",
                       inline: true,
                     },
                     {
@@ -210,7 +229,10 @@ module.exports = {
         });
           
         const message = await interaction.fetchReply();
-
+        const db = mongoose.connection.useDb(guildid);
+        const dbmodel = db.model('AvaRaids', new mongoose.Schema({ messageId: String, selectedDate: Date }));
+        await dbmodel.create({ messageId: message.id, selectedDate: selectedDate });
+        
         emojiarray.forEach(emoji => {
             message.react(emoji);
         });
@@ -232,7 +254,6 @@ module.exports = {
                 let carvingusers = [];
                 let realmbreakerusers = [];
                 let spirithunterusers = [];
-                let specterjacketusers = [];
                 let chillhowleusers = [];
                 let greatfireusers = [];
                 let xbowusers = [];
@@ -354,17 +375,6 @@ module.exports = {
                     return { id: userId, name: displayName };
                   });    
                 }
-                if (reactionCollection.has(specterjacketemoji)) {
-                  const specterjacketReaction = reactionCollection.get(specterjacketemoji);
-                  const specterjacketUserIds = (await specterjacketReaction.users.fetch()).filter(user => !user.bot).map(user => user.id);
-
-                  // Fetch server nicknames for the users
-                  specterjacketusers = specterjacketUserIds.map(userId => {
-                    const member = message.guild.members.cache.get(userId);
-                    const displayName = member ? (member.nickname || member.user.username) : "Unknown User";
-                    return { id: userId, name: displayName };
-                  });    
-                }
                 if (reactionCollection.has(chillhowlemoji)) {
                   const chillhowlReaction = reactionCollection.get(chillhowlemoji);
                   const chillhowlUserIds = (await chillhowlReaction.users.fetch()).filter(user => !user.bot).map(user => user.id);
@@ -437,9 +447,10 @@ module.exports = {
                 const originalTitle = originalEmbed.title;
                 const originalDescription = originalEmbed.description;
                 const originalImage = originalEmbed.image;
-                const originalFooter = originalEmbed.footer;
                 const originalColor = originalEmbed.color;
                 const originalFields = originalEmbed.fields;
+                const originalRaidleadername = originalFields[0].value;
+                const originalVoiceChannelName = originalFields[2].value;
 
                 let originalCalendarValue, originalClockValue, originalHourglassValue;
 
@@ -472,6 +483,21 @@ module.exports = {
                       .setTimestamp()
                       .setImage(originalImage.url)
                       .addFields([
+                          {
+                              name: "\u200E",
+                              value: originalRaidleadername,
+                              inline: true,
+                          },
+                          {
+                              name: "\u200E",
+                              value: `<:total:1129625110605737994> ** ${maintankusers.length + offtankusers.length + greatarcaneusers.length + onehandarcaneusers.length + mainhealerusers.length + ironrootusers.length + shadowcallerusers.length + carvingusers.length + realmbreakerusers.length + spirithunterusers.length + chillhowleusers.length + greatfireusers.length + xbowusers.length + fillallusers.length + scoutusers.length } **`,
+                              inline: true,
+                          },
+                          {
+                              name: "\u200E",
+                              value: originalVoiceChannelName,
+                              inline: true,
+                          },
                           {
                               name:"\u200B",
                               value:`${originalCalendarValue}`,
@@ -514,7 +540,7 @@ module.exports = {
                           },
                           {
                               name: " ",
-                              value: "\n\u200B",
+                              value: " ",
                               inline: false,
                           },
                           {
@@ -543,13 +569,8 @@ module.exports = {
                             inline: true,
                           },
                           {
-                            name: `<:specterjacket:1125035760492494848> __**SpecterJacket**__(${specterjacketusers.length})`,
-                            value: ` ${specterjacketusers.map(user => '<:specterjacket:1125035760492494848> ' + user.name).join("\n")} \n\u200B`,
-                            inline: true,
-                          },
-                          {
                             name: `<:chillhowl:1125035788392988702> __**Chillhowl**__(${chillhowleusers.length})`,
-                            value: ` ${chillhowleusers.map(user => '<:chillhowl:1125035788392988702> ' + user.name).join("\n")}`,
+                            value: ` ${chillhowleusers.map(user => '<:chillhowl:1125035788392988702> ' + user.name).join("\n")} \n\u200B`,
                             inline: true,
                           },
                           {
@@ -588,6 +609,15 @@ module.exports = {
         };          
         
         client.on('messageReactionAdd', async (reaction, user) => {
+          // mongodb 
+          const db = mongoose.connection.useDb(guildid);
+          const dbmodel = db.model('AvaRaids', new mongoose.Schema({ messageId: String, selectedDate: Date }));
+          const dbresult = await dbmodel.findOne({ messageId: reaction.message.id });
+          const selectedDate = dbresult.selectedDate;
+          const now = new Date();
+          if (selectedDate < now) {
+            return;
+          }
           if (reaction.message.id === message.id && user.bot === false) {
             // Remove the user's previous reactions if they reacted with a new emoji
             const userReactions = reaction.message.reactions.cache.filter(
@@ -602,3 +632,4 @@ module.exports = {
         });
     },
 };
+
