@@ -236,10 +236,7 @@ module.exports = {
         
         emojiarray.forEach(emoji => {
             message.react(emoji);
-        });
-
-        // Function to fetch reactions
-                 
+        });     
     },
 };
 
@@ -474,22 +471,9 @@ module.exports.fetchReactions = async function(message) {
       const originalFields = originalEmbed.fields;
       const originalRaidleadername = originalFields[0].value;
       const originalVoiceChannelName = originalFields[2].value;
-
-      let originalCalendarValue, originalClockValue, originalHourglassValue;
-
-      originalFields.forEach(field => {
-        switch (field.name) {
-          case '\u200B':
-            originalCalendarValue = field.value;
-            break;
-          case '\u200C':
-            originalClockValue = field.value;
-            break;
-          case '\u200D':
-            originalHourglassValue = field.value;
-            break;
-        }
-      });
+      const originalCalendarValue = originalFields[3].value;
+      const originalClockValue = originalFields[4].value;
+      const originalHourglassValue = originalFields[5].value;
 
       // Update the embed with the new reaction counts
       message.edit({
@@ -507,33 +491,33 @@ module.exports.fetchReactions = async function(message) {
             .setImage(originalImage.url)
             .addFields([
                 {
-                    name: "\u200E",
+                    name: " ",
                     value: originalRaidleadername,
                     inline: true,
                 },
                 {
-                    name: "\u200E",
+                    name: " ",
                     value: `<:total:1129625110605737994> ** ${maintankusers.length + offtankusers.length + greatarcaneusers.length + onehandarcaneusers.length + mainhealerusers.length + ironrootusers.length + shadowcallerusers.length + carvingusers.length + realmbreakerusers.length + spirithunterusers.length + chillhowleusers.length + greatfireusers.length + xbowusers.length + fillallusers.length + scoutusers.length } **`,
                     inline: true,
                 },
                 {
-                    name: "\u200E",
+                    name: " ",
                     value: originalVoiceChannelName,
                     inline: true,
                 },
                 {
-                    name:"\u200B",
-                    value:`${originalCalendarValue}`,
+                    name:" ",
+                    value: originalCalendarValue,
                     inline: true,
                 },
                 {
-                    name:"\u200C",
-                    value:`${originalClockValue}`,
+                    name:" ",
+                    value: originalClockValue,
                     inline: true,
                 },
                 {
-                    name:"\u200D",
-                    value:`${originalHourglassValue}\n\u200B`,
+                    name:" ",
+                    value: originalHourglassValue,
                     inline: true,
                 },
                 {

@@ -72,10 +72,9 @@ process.on('unhandledRejection', async (err, promise) => {
   console.error(promise);
 });
 
-client.on('messageReactionAdd', async (user) => {
-  if(user.bot){
-    return;
-  }
+client.on('messageReactionAdd', async (reaction, user) => {
+  if (user.bot) return;
+  console.log("Index.js triggered");
   // mongodb 
   const db = mongoose.connection.useDb("AvaRaids");
   const collectionmassage = db.collection("avaraids");
@@ -101,10 +100,8 @@ client.on('messageReactionAdd', async (user) => {
   });
 });
 
-client.on('messageReactionRemove', async (user) => {
-  if(user.bot){
-    return;
-  }
+client.on('messageReactionRemove', async (reaction, user) => {
+  if (user.bot) return;
   // mongodb 
   const db = mongoose.connection.useDb("AvaRaids");
   const collectionmassage = db.collection("avaraids");
