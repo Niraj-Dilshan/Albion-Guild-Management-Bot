@@ -614,3 +614,803 @@ module.exports.fetchReactions = async function(message) {
     return;
   }
 }; 
+
+module.exports.updatetemplate = async function(message, fieldname, fieldvalue) {
+  try {
+      // Fetch the message to ensure all properties are available
+      await message.fetch();
+
+      // declare emojis
+      const maintankemoji = '918772807339474984';
+      const offtankemoji = '1125035880541855825';
+      const greatarcaneemoji = '1125035859067023451';
+      const onehandarcaneemoji = '1125035868919443466';
+      const mainhealeremoji = '1125035848841310258';
+      const ironrootemoji = '1125035836723953766';
+      const shadowcalleremoji = '1125035825512587274';
+      const carvingemoji = '1125035809628762143';
+      const realmbreakeremoji = '1125035797767258213';
+      const spirithunteremoji = '1125035741173514302';
+      const chillhowlemoji = '1125035788392988702';
+      const greatfireemoji = '1125446279183486996';
+      const xbowemoji = '1125035778796441700';
+      const fillallemoji = '1125430605677609033';
+      const scoutemoji = '1125430590116737056';
+      const absenceemoji = '1125430596794077255';
+
+      // Declare the user arrays
+      let maintankusers = [];
+      let offtankusers = [];
+      let greatarcaneusers = [];
+      let onehandarcaneusers = [];
+      let mainhealerusers = [];
+      let ironrootusers = [];
+      let shadowcallerusers = [];
+      let carvingusers = [];
+      let realmbreakerusers = [];
+      let spirithunterusers = [];
+      let chillhowleusers = [];
+      let greatfireusers = [];
+      let xbowusers = [];
+      let fillallusers = [];
+      let scoutusers = [];
+      let absenceusers = [];
+
+      // Get the reaction collection
+      const reactionCollection = message.reactions.cache;
+  
+      if (reactionCollection.has(maintankemoji)) {
+        const maintankReaction = reactionCollection.get(maintankemoji);
+        const maintankUserIds = (await maintankReaction.users.fetch()).filter(user => !user.bot).map(user => user.id);
+      
+        // Fetch server nicknames for the users
+        maintankusers = maintankUserIds.map(userId => {
+          const member = message.guild.members.cache.get(userId);
+          const displayName = member ? (member.nickname || member.user.username) : "Unknown User";
+          return { id: userId, name: displayName };
+        });
+      }
+      if (reactionCollection.has(offtankemoji)) {
+        const offtankReaction = reactionCollection.get(offtankemoji);
+        const offtankUserIds = (await offtankReaction.users.fetch()).filter(user => !user.bot).map(user => user.id);
+      
+        // Fetch server nicknames for the users
+        offtankusers = offtankUserIds.map(userId => {
+          const member = message.guild.members.cache.get(userId);
+          const displayName = member ? (member.nickname || member.user.username) : "Unknown User";
+          return { id: userId, name: displayName };
+        });
+      }
+      if (reactionCollection.has(greatarcaneemoji)) {
+          const greatarcaneReaction = reactionCollection.get(greatarcaneemoji);
+          const greatarcaneUserIds = (await greatarcaneReaction.users.fetch()).filter(user => !user.bot).map(user => user.id);
+
+          // Fetch server nicknames for the users
+          greatarcaneusers = greatarcaneUserIds.map(userId => {
+            const member = message.guild.members.cache.get(userId);
+            const displayName = member ? (member.nickname || member.user.username) : "Unknown User";
+            return { id: userId, name: displayName };
+          });
+      }
+      if (reactionCollection.has(onehandarcaneemoji)) {
+        const onehandarcaneReaction = reactionCollection.get(onehandarcaneemoji);
+        const onehandarcaneUserIds = (await onehandarcaneReaction.users.fetch()).filter(user => !user.bot).map(user => user.id);
+
+        // Fetch server nicknames for the users
+        onehandarcaneusers = onehandarcaneUserIds.map(userId => {
+          const member = message.guild.members.cache.get(userId);
+          const displayName = member ? (member.nickname || member.user.username) : "Unknown User";
+          return { id: userId, name: displayName };
+        });  
+      }
+      if (reactionCollection.has(mainhealeremoji)) {
+        const mainhealerReaction = reactionCollection.get(mainhealeremoji);
+        const mainhealerUserIds = (await mainhealerReaction.users.fetch()).filter(user => !user.bot).map(user => user.id);
+
+        // Fetch server nicknames for the users
+        mainhealerusers = mainhealerUserIds.map(userId => {
+          const member = message.guild.members.cache.get(userId);
+          const displayName = member ? (member.nickname || member.user.username) : "Unknown User";
+          return { id: userId, name: displayName };
+        });
+      }
+      if (reactionCollection.has(ironrootemoji)) {
+        const ironrootReaction = reactionCollection.get(ironrootemoji);
+        const ironrootUserIds = (await ironrootReaction.users.fetch()).filter(user => !user.bot).map(user => user.id);
+
+        // Fetch server nicknames for the users
+        ironrootusers = ironrootUserIds.map(userId => {
+          const member = message.guild.members.cache.get(userId);
+          const displayName = member ? (member.nickname || member.user.username) : "Unknown User";
+          return { id: userId, name: displayName };
+        });
+      }
+      if (reactionCollection.has(shadowcalleremoji)) {
+        const shadowcallerReaction = reactionCollection.get(shadowcalleremoji);
+        const shadowcallerUserIds = (await shadowcallerReaction.users.fetch()).filter(user => !user.bot).map(user => user.id);
+
+        // Fetch server nicknames for the users
+        shadowcallerusers = shadowcallerUserIds.map(userId => {
+          const member = message.guild.members.cache.get(userId);
+          const displayName = member ? (member.nickname || member.user.username) : "Unknown User";
+          return { id: userId, name: displayName };
+        });
+      }
+      if (reactionCollection.has(carvingemoji)) {
+        const carvingReaction = reactionCollection.get(carvingemoji);
+        const carvingUserIds = (await carvingReaction.users.fetch()).filter(user => !user.bot).map(user => user.id);
+
+        // Fetch server nicknames for the users
+        carvingusers = carvingUserIds.map(userId => {
+          const member = message.guild.members.cache.get(userId);
+          const displayName = member ? (member.nickname || member.user.username) : "Unknown User";
+          return { id: userId, name: displayName };
+        });
+      
+      }
+      if (reactionCollection.has(realmbreakeremoji)) {
+        const realmbreakerReaction = reactionCollection.get(realmbreakeremoji);
+        const realmbreakerUserIds = (await realmbreakerReaction.users.fetch()).filter(user => !user.bot).map(user => user.id);
+
+        // Fetch server nicknames for the users
+        realmbreakerusers = realmbreakerUserIds.map(userId => {
+          const member = message.guild.members.cache.get(userId);
+          const displayName = member ? (member.nickname || member.user.username) : "Unknown User";
+          return { id: userId, name: displayName };
+        });    
+      }
+      if (reactionCollection.has(spirithunteremoji)) {
+        const spirithunterReaction = reactionCollection.get(spirithunteremoji);
+        const spirithunterUserIds = (await spirithunterReaction.users.fetch()).filter(user => !user.bot).map(user => user.id);
+
+        // Fetch server nicknames for the users
+        spirithunterusers = spirithunterUserIds.map(userId => {
+          const member = message.guild.members.cache.get(userId);
+          const displayName = member ? (member.nickname || member.user.username) : "Unknown User";
+          return { id: userId, name: displayName };
+        });    
+      }
+      if (reactionCollection.has(chillhowlemoji)) {
+        const chillhowlReaction = reactionCollection.get(chillhowlemoji);
+        const chillhowlUserIds = (await chillhowlReaction.users.fetch()).filter(user => !user.bot).map(user => user.id);
+
+        // Fetch server nicknames for the users
+        chillhowleusers = chillhowlUserIds.map(userId => {
+          const member = message.guild.members.cache.get(userId);
+          const displayName = member ? (member.nickname || member.user.username) : "Unknown User";
+          return { id: userId, name: displayName };
+        });    
+      
+      }
+      if (reactionCollection.has(greatfireemoji)) {
+        const greatfireReaction = reactionCollection.get(greatfireemoji);
+        const greatfireUserIds = (await greatfireReaction.users.fetch()).filter(user => !user.bot).map(user => user.id);
+
+        // Fetch server nicknames for the users
+        greatfireusers = greatfireUserIds.map(userId => {
+          const member = message.guild.members.cache.get(userId);
+          const displayName = member ? (member.nickname || member.user.username) : "Unknown User";
+          return { id: userId, name: displayName };
+        });    
+      }
+      if (reactionCollection.has(xbowemoji)) {
+        const xbowReaction = reactionCollection.get(xbowemoji);
+        const xbowUserIds = (await xbowReaction.users.fetch()).filter(user => !user.bot).map(user => user.id);
+
+        // Fetch server nicknames for the users
+        xbowusers = xbowUserIds.map(userId => {
+          const member = message.guild.members.cache.get(userId);
+          const displayName = member ? (member.nickname || member.user.username) : "Unknown User";
+          return { id: userId, name: displayName };
+        });    
+      }
+      if (reactionCollection.has(fillallemoji)) {
+        const fillallReaction = reactionCollection.get(fillallemoji);
+        const fillallUserIds = (await fillallReaction.users.fetch()).filter(user => !user.bot).map(user => user.id);
+
+        // Fetch server nicknames for the users
+        fillallusers = fillallUserIds.map(userId => {
+          const member = message.guild.members.cache.get(userId);
+          const displayName = member ? (member.nickname || member.user.username) : "Unknown User";
+          return { id: userId, name: displayName };
+        });    
+      }
+      if (reactionCollection.has(scoutemoji)) {
+        const scoutReaction = reactionCollection.get(scoutemoji);
+        const scoutUserIds = (await scoutReaction.users.fetch()).filter(user => !user.bot).map(user => user.id);
+
+        // Fetch server nicknames for the users
+        scoutusers = scoutUserIds.map(userId => {
+          const member = message.guild.members.cache.get(userId);
+          const displayName = member ? (member.nickname || member.user.username) : "Unknown User";
+          return { id: userId, name: displayName };
+        });
+      }
+      if (reactionCollection.has(absenceemoji)) {
+        const absenceReaction = reactionCollection.get(absenceemoji);
+        const absenceUserIds = (await absenceReaction.users.fetch()).filter(user => !user.bot).map(user => user.id);
+
+        // Fetch server nicknames for the users
+        absenceusers = absenceUserIds.map(userId => {
+          const member = message.guild.members.cache.get(userId);
+          const displayName = member ? (member.nickname || member.user.username) : "Unknown User";
+          return { id: userId, name: displayName, };
+        });
+      }
+
+      const originalEmbed = message.embeds[0];
+      const originalTitle = originalEmbed.title;
+      const originalDescription = originalEmbed.description;
+      const originalImage = originalEmbed.image;
+      const originalColor = originalEmbed.color;
+      const originalFields = originalEmbed.fields;
+      const originalRaidleadername = originalFields[0].value;
+      const originalVoiceChannelName = originalFields[2].value;
+      const originalCalendarValue = originalFields[3].value;
+      const originalClockValue = originalFields[4].value;
+      const originalHourglassValue = originalFields[5].value;
+
+      if(fieldname == "title") {
+        message.edit({
+          embeds: [
+            new EmbedBuilder()
+            .setTitle(fieldvalue)
+            .setDescription(originalDescription)
+            .setColor(originalColor)
+            .setFooter({
+              text: "Made By Black-Rose Bot",
+              iconURL:
+                "https://cdn.discordapp.com/attachments/1073378626080362516/1076777453709688882/AdobeStock_555578592.jpeg",
+            })
+            .setTimestamp()
+            .setImage(originalImage.url)
+            .addFields([
+                {
+                    name: " ",
+                    value: originalRaidleadername,
+                    inline: true,
+                },
+                {
+                    name: " ",
+                    value: `<:total:1129625110605737994> ** ${maintankusers.length + offtankusers.length + greatarcaneusers.length + onehandarcaneusers.length + mainhealerusers.length + ironrootusers.length + shadowcallerusers.length + carvingusers.length + realmbreakerusers.length + spirithunterusers.length + chillhowleusers.length + greatfireusers.length + xbowusers.length + fillallusers.length + scoutusers.length } **`,
+                    inline: true,
+                },
+                {
+                    name: " ",
+                    value: originalVoiceChannelName,
+                    inline: true,
+                },
+                {
+                    name:" ",
+                    value: originalCalendarValue,
+                    inline: true,
+                },
+                {
+                    name:" ",
+                    value: originalClockValue,
+                    inline: true,
+                },
+                {
+                    name:" ",
+                    value: originalHourglassValue,
+                    inline: true,
+                },
+                {
+                  name: `<:maintank:918772807339474984> __**MainTank**__(${maintankusers.length})`,
+                  value: ` ${maintankusers.map(user => '<:maintank:918772807339474984> ' + user.name).join("\n")}`,
+                  inline: true,
+                },
+                {
+                  name:  `<:offtank:1125035880541855825> __**OffTank**__(${offtankusers.length})`,
+                  value: ` ${offtankusers.map(user => '<:offtank:1125035880541855825> ' + user.name).join("\n")}`,
+                  inline: true,
+                },
+                {
+                  name:  `<:mainhealer:1125035848841310258> __**MainHealer**__(${mainhealerusers.length})`,
+                  value: `  ${mainhealerusers.map(user => '<:mainhealer:1125035848841310258> ' + user.name).join("\n")} \n\u200B`,
+                  inline: true,
+                },
+                {
+                  name: `<:greatarcane:1125035859067023451> __**GreatArcane**__(${greatarcaneusers.length})`,
+                  value: `  ${greatarcaneusers.map(user => '<:greatarcane:1125035859067023451> ' + user.name).join("\n")}`,
+                  inline: true,
+                },
+                {
+                  name: `<:onehandarcane:1125035868919443466> __**OneHandArcane**__(${onehandarcaneusers.length})`,
+                  value: ` ${onehandarcaneusers.map(user => '<:onehandarcane:1125035868919443466> ' + user.name).join("\n")}`,
+                  inline: true,
+                },
+                {
+                    name: " ",
+                    value: " ",
+                    inline: false,
+                },
+                {
+                  name: `<:ironroot:1125035836723953766> __**IronRoot**__(${ironrootusers.length})`,
+                  value: `  ${ironrootusers.map(user => '<:ironroot:1125035836723953766> ' + user.name).join("\n")}`,
+                  inline: true,
+                },
+                {
+                  name: `<:shadowcaller:1125035825512587274> __**ShadowCaller**__(${shadowcallerusers.length})`,
+                  value: ` ${shadowcallerusers.map(user => '<:shadowcaller:1125035825512587274> ' + user.name).join("\n")}`,
+                  inline: true,
+                },
+                {
+                  name: `<:carving:1125035809628762143> __**Carving**__(${carvingusers.length})`,
+                  value: ` ${carvingusers.map(user => '<:carving:1125035809628762143> ' + user.name).join("\n")} \n\u200B`,
+                  inline: true,
+                },
+                {
+                  name: `<:realmbreaker:1125035797767258213> __**RealmBreaker**__(${realmbreakerusers.length})`,
+                  value: ` ${realmbreakerusers.map(user => '<:realmbreaker:1125035797767258213> ' + user.name).join("\n")}`,
+                  inline: true,
+                },
+                {
+                  name: `<:spirithunter:1125035741173514302> __**SpritHunter**__(${spirithunterusers.length})`,
+                  value: ` ${spirithunterusers.map(user => '<:spirithunter:1125035741173514302> ' + user.name).join("\n")}`,
+                  inline: true,
+                },
+                {
+                  name: `<:chillhowl:1125035788392988702> __**Chillhowl**__(${chillhowleusers.length})`,
+                  value: ` ${chillhowleusers.map(user => '<:chillhowl:1125035788392988702> ' + user.name).join("\n")} \n\u200B`,
+                  inline: true,
+                },
+                {
+                  name: `<:greatfire:1125446279183486996> __**GreatFire**__(${greatfireusers.length})`,
+                  value: ` ${greatfireusers.map(user => '<:greatfire:1125446279183486996> ' + user.name).join("\n")}`,
+                  inline: true,
+                },
+                {
+                  name: `<:xbow:1125035778796441700>  __**Xbow**__(${xbowusers.length})`,
+                  value: ` ${xbowusers.map(user => '<:xbow:1125035778796441700> ' + user.name).join("\n")} \n\u200B`,
+                  inline: true,
+                },
+                {
+                  name: `<:fillall:1125430605677609033> __**Fill All**__(${fillallusers.length})`,
+                  value: ` ${fillallusers.map(user => '<:fillall:1125430605677609033> ' + user.name).join("\n")}`,
+                  inline: true,
+                },
+                {
+                  name: `<:scout:1125430590116737056> __**Scout**__(${scoutusers.length})`,
+                  value: ` ${scoutusers.map(user => '<:scout:1125430590116737056> ' + user.name).join("\n")} \n\u200B`,
+                  inline: true,
+                },
+                {
+                    name: `<:absence:1125430596794077255> __**Absence**__(${absenceusers.length})`,
+                    value: ` ${absenceusers.map(user => '<:absence:1125430596794077255> ' + user.name).join("\n")} \n\u200B`,
+                    inline: false,
+                },
+              ]),
+          ],
+      });
+      }
+      if(fieldname == "description") {
+        message.edit({
+          embeds: [
+            new EmbedBuilder()
+            .setTitle(originalTitle)
+            .setDescription(fieldvalue)
+            .setColor(originalColor)
+            .setFooter({
+              text: "Made By Black-Rose Bot",
+              iconURL:
+                "https://cdn.discordapp.com/attachments/1073378626080362516/1076777453709688882/AdobeStock_555578592.jpeg",
+            })
+            .setTimestamp()
+            .setImage(originalImage.url)
+            .addFields([
+                {
+                    name: " ",
+                    value: originalRaidleadername,
+                    inline: true,
+                },
+                {
+                    name: " ",
+                    value: `<:total:1129625110605737994> ** ${maintankusers.length + offtankusers.length + greatarcaneusers.length + onehandarcaneusers.length + mainhealerusers.length + ironrootusers.length + shadowcallerusers.length + carvingusers.length + realmbreakerusers.length + spirithunterusers.length + chillhowleusers.length + greatfireusers.length + xbowusers.length + fillallusers.length + scoutusers.length } **`,
+                    inline: true,
+                },
+                {
+                    name: " ",
+                    value: originalVoiceChannelName,
+                    inline: true,
+                },
+                {
+                    name:" ",
+                    value: originalCalendarValue,
+                    inline: true,
+                },
+                {
+                    name:" ",
+                    value: originalClockValue,
+                    inline: true,
+                },
+                {
+                    name:" ",
+                    value: originalHourglassValue,
+                    inline: true,
+                },
+                {
+                  name: `<:maintank:918772807339474984> __**MainTank**__(${maintankusers.length})`,
+                  value: ` ${maintankusers.map(user => '<:maintank:918772807339474984> ' + user.name).join("\n")}`,
+                  inline: true,
+                },
+                {
+                  name:  `<:offtank:1125035880541855825> __**OffTank**__(${offtankusers.length})`,
+                  value: ` ${offtankusers.map(user => '<:offtank:1125035880541855825> ' + user.name).join("\n")}`,
+                  inline: true,
+                },
+                {
+                  name:  `<:mainhealer:1125035848841310258> __**MainHealer**__(${mainhealerusers.length})`,
+                  value: `  ${mainhealerusers.map(user => '<:mainhealer:1125035848841310258> ' + user.name).join("\n")} \n\u200B`,
+                  inline: true,
+                },
+                {
+                  name: `<:greatarcane:1125035859067023451> __**GreatArcane**__(${greatarcaneusers.length})`,
+                  value: `  ${greatarcaneusers.map(user => '<:greatarcane:1125035859067023451> ' + user.name).join("\n")}`,
+                  inline: true,
+                },
+                {
+                  name: `<:onehandarcane:1125035868919443466> __**OneHandArcane**__(${onehandarcaneusers.length})`,
+                  value: ` ${onehandarcaneusers.map(user => '<:onehandarcane:1125035868919443466> ' + user.name).join("\n")}`,
+                  inline: true,
+                },
+                {
+                    name: " ",
+                    value: " ",
+                    inline: false,
+                },
+                {
+                  name: `<:ironroot:1125035836723953766> __**IronRoot**__(${ironrootusers.length})`,
+                  value: `  ${ironrootusers.map(user => '<:ironroot:1125035836723953766> ' + user.name).join("\n")}`,
+                  inline: true,
+                },
+                {
+                  name: `<:shadowcaller:1125035825512587274> __**ShadowCaller**__(${shadowcallerusers.length})`,
+                  value: ` ${shadowcallerusers.map(user => '<:shadowcaller:1125035825512587274> ' + user.name).join("\n")}`,
+                  inline: true,
+                },
+                {
+                  name: `<:carving:1125035809628762143> __**Carving**__(${carvingusers.length})`,
+                  value: ` ${carvingusers.map(user => '<:carving:1125035809628762143> ' + user.name).join("\n")} \n\u200B`,
+                  inline: true,
+                },
+                {
+                  name: `<:realmbreaker:1125035797767258213> __**RealmBreaker**__(${realmbreakerusers.length})`,
+                  value: ` ${realmbreakerusers.map(user => '<:realmbreaker:1125035797767258213> ' + user.name).join("\n")}`,
+                  inline: true,
+                },
+                {
+                  name: `<:spirithunter:1125035741173514302> __**SpritHunter**__(${spirithunterusers.length})`,
+                  value: ` ${spirithunterusers.map(user => '<:spirithunter:1125035741173514302> ' + user.name).join("\n")}`,
+                  inline: true,
+                },
+                {
+                  name: `<:chillhowl:1125035788392988702> __**Chillhowl**__(${chillhowleusers.length})`,
+                  value: ` ${chillhowleusers.map(user => '<:chillhowl:1125035788392988702> ' + user.name).join("\n")} \n\u200B`,
+                  inline: true,
+                },
+                {
+                  name: `<:greatfire:1125446279183486996> __**GreatFire**__(${greatfireusers.length})`,
+                  value: ` ${greatfireusers.map(user => '<:greatfire:1125446279183486996> ' + user.name).join("\n")}`,
+                  inline: true,
+                },
+                {
+                  name: `<:xbow:1125035778796441700>  __**Xbow**__(${xbowusers.length})`,
+                  value: ` ${xbowusers.map(user => '<:xbow:1125035778796441700> ' + user.name).join("\n")} \n\u200B`,
+                  inline: true,
+                },
+                {
+                  name: `<:fillall:1125430605677609033> __**Fill All**__(${fillallusers.length})`,
+                  value: ` ${fillallusers.map(user => '<:fillall:1125430605677609033> ' + user.name).join("\n")}`,
+                  inline: true,
+                },
+                {
+                  name: `<:scout:1125430590116737056> __**Scout**__(${scoutusers.length})`,
+                  value: ` ${scoutusers.map(user => '<:scout:1125430590116737056> ' + user.name).join("\n")} \n\u200B`,
+                  inline: true,
+                },
+                {
+                    name: `<:absence:1125430596794077255> __**Absence**__(${absenceusers.length})`,
+                    value: ` ${absenceusers.map(user => '<:absence:1125430596794077255> ' + user.name).join("\n")} \n\u200B`,
+                    inline: false,
+                },
+              ]),
+          ],
+      });
+      }
+      if(fieldname == "image") {
+        message.edit({
+          embeds: [
+            new EmbedBuilder()
+            .setTitle(originalTitle)
+            .setDescription(originalDescription)
+            .setColor(originalColor)
+            .setFooter({
+              text: "Made By Black-Rose Bot",
+              iconURL:
+                "https://cdn.discordapp.com/attachments/1073378626080362516/1076777453709688882/AdobeStock_555578592.jpeg",
+            })
+            .setTimestamp()
+            .setImage(fieldvalue)
+            .addFields([
+                {
+                    name: " ",
+                    value: originalRaidleadername,
+                    inline: true,
+                },
+                {
+                    name: " ",
+                    value: `<:total:1129625110605737994> ** ${maintankusers.length + offtankusers.length + greatarcaneusers.length + onehandarcaneusers.length + mainhealerusers.length + ironrootusers.length + shadowcallerusers.length + carvingusers.length + realmbreakerusers.length + spirithunterusers.length + chillhowleusers.length + greatfireusers.length + xbowusers.length + fillallusers.length + scoutusers.length } **`,
+                    inline: true,
+                },
+                {
+                    name: " ",
+                    value: originalVoiceChannelName,
+                    inline: true,
+                },
+                {
+                    name:" ",
+                    value: originalCalendarValue,
+                    inline: true,
+                },
+                {
+                    name:" ",
+                    value: originalClockValue,
+                    inline: true,
+                },
+                {
+                    name:" ",
+                    value: originalHourglassValue,
+                    inline: true,
+                },
+                {
+                  name: `<:maintank:918772807339474984> __**MainTank**__(${maintankusers.length})`,
+                  value: ` ${maintankusers.map(user => '<:maintank:918772807339474984> ' + user.name).join("\n")}`,
+                  inline: true,
+                },
+                {
+                  name:  `<:offtank:1125035880541855825> __**OffTank**__(${offtankusers.length})`,
+                  value: ` ${offtankusers.map(user => '<:offtank:1125035880541855825> ' + user.name).join("\n")}`,
+                  inline: true,
+                },
+                {
+                  name:  `<:mainhealer:1125035848841310258> __**MainHealer**__(${mainhealerusers.length})`,
+                  value: `  ${mainhealerusers.map(user => '<:mainhealer:1125035848841310258> ' + user.name).join("\n")} \n\u200B`,
+                  inline: true,
+                },
+                {
+                  name: `<:greatarcane:1125035859067023451> __**GreatArcane**__(${greatarcaneusers.length})`,
+                  value: `  ${greatarcaneusers.map(user => '<:greatarcane:1125035859067023451> ' + user.name).join("\n")}`,
+                  inline: true,
+                },
+                {
+                  name: `<:onehandarcane:1125035868919443466> __**OneHandArcane**__(${onehandarcaneusers.length})`,
+                  value: ` ${onehandarcaneusers.map(user => '<:onehandarcane:1125035868919443466> ' + user.name).join("\n")}`,
+                  inline: true,
+                },
+                {
+                    name: " ",
+                    value: " ",
+                    inline: false,
+                },
+                {
+                  name: `<:ironroot:1125035836723953766> __**IronRoot**__(${ironrootusers.length})`,
+                  value: `  ${ironrootusers.map(user => '<:ironroot:1125035836723953766> ' + user.name).join("\n")}`,
+                  inline: true,
+                },
+                {
+                  name: `<:shadowcaller:1125035825512587274> __**ShadowCaller**__(${shadowcallerusers.length})`,
+                  value: ` ${shadowcallerusers.map(user => '<:shadowcaller:1125035825512587274> ' + user.name).join("\n")}`,
+                  inline: true,
+                },
+                {
+                  name: `<:carving:1125035809628762143> __**Carving**__(${carvingusers.length})`,
+                  value: ` ${carvingusers.map(user => '<:carving:1125035809628762143> ' + user.name).join("\n")} \n\u200B`,
+                  inline: true,
+                },
+                {
+                  name: `<:realmbreaker:1125035797767258213> __**RealmBreaker**__(${realmbreakerusers.length})`,
+                  value: ` ${realmbreakerusers.map(user => '<:realmbreaker:1125035797767258213> ' + user.name).join("\n")}`,
+                  inline: true,
+                },
+                {
+                  name: `<:spirithunter:1125035741173514302> __**SpritHunter**__(${spirithunterusers.length})`,
+                  value: ` ${spirithunterusers.map(user => '<:spirithunter:1125035741173514302> ' + user.name).join("\n")}`,
+                  inline: true,
+                },
+                {
+                  name: `<:chillhowl:1125035788392988702> __**Chillhowl**__(${chillhowleusers.length})`,
+                  value: ` ${chillhowleusers.map(user => '<:chillhowl:1125035788392988702> ' + user.name).join("\n")} \n\u200B`,
+                  inline: true,
+                },
+                {
+                  name: `<:greatfire:1125446279183486996> __**GreatFire**__(${greatfireusers.length})`,
+                  value: ` ${greatfireusers.map(user => '<:greatfire:1125446279183486996> ' + user.name).join("\n")}`,
+                  inline: true,
+                },
+                {
+                  name: `<:xbow:1125035778796441700>  __**Xbow**__(${xbowusers.length})`,
+                  value: ` ${xbowusers.map(user => '<:xbow:1125035778796441700> ' + user.name).join("\n")} \n\u200B`,
+                  inline: true,
+                },
+                {
+                  name: `<:fillall:1125430605677609033> __**Fill All**__(${fillallusers.length})`,
+                  value: ` ${fillallusers.map(user => '<:fillall:1125430605677609033> ' + user.name).join("\n")}`,
+                  inline: true,
+                },
+                {
+                  name: `<:scout:1125430590116737056> __**Scout**__(${scoutusers.length})`,
+                  value: ` ${scoutusers.map(user => '<:scout:1125430590116737056> ' + user.name).join("\n")} \n\u200B`,
+                  inline: true,
+                },
+                {
+                    name: `<:absence:1125430596794077255> __**Absence**__(${absenceusers.length})`,
+                    value: ` ${absenceusers.map(user => '<:absence:1125430596794077255> ' + user.name).join("\n")} \n\u200B`,
+                    inline: false,
+                },
+              ]),
+          ],
+      });
+      }
+      if(fieldname == "date-time") {
+        const dateTimeString = `${fieldvalue}`;
+        const selectedDate = DateTime.fromFormat(dateTimeString, "yyyy-MM-dd HH:mm").toJSDate()
+        // Format the date and time using the previous JavaScript code
+        const ts = selectedDate.getTime().toString();
+        const timestampCode = `<t:${Math.floor(selectedDate.getTime() / 1000)}:R>`;
+        const formattedDate = `<t:${Math.floor(selectedDate.getTime() / 1000)}:D>`;
+        const formattedTime = `<t:${Math.floor(selectedDate.getTime() / 1000)}:t>`;
+        
+        //update mongodb
+        const db = mongoose.connection.useDb("AvaRaids");
+        const dbmodel = db.model('AvaRaids', new mongoose.Schema({ messageId: String, channelId: String, selectedDate: Date }));
+        await dbmodel.updateOne({
+          messageId: message.id
+        }, {
+            $set: {
+              selectedDate: selectedDate
+            }
+        }, {
+            upsert: true
+        });
+
+        message.edit({
+          embeds: [
+            new EmbedBuilder()
+            .setTitle(originalTitle)
+            .setDescription(originalDescription)
+            .setColor(originalColor)
+            .setFooter({
+              text: "Made By Black-Rose Bot",
+              iconURL:
+                "https://cdn.discordapp.com/attachments/1073378626080362516/1076777453709688882/AdobeStock_555578592.jpeg",
+            })
+            .setTimestamp()
+            .setImage(originalImage.url)
+            .addFields([
+                {
+                    name: " ",
+                    value: originalRaidleadername,
+                    inline: true,
+                },
+                {
+                    name: " ",
+                    value: `<:total:1129625110605737994> ** ${maintankusers.length + offtankusers.length + greatarcaneusers.length + onehandarcaneusers.length + mainhealerusers.length + ironrootusers.length + shadowcallerusers.length + carvingusers.length + realmbreakerusers.length + spirithunterusers.length + chillhowleusers.length + greatfireusers.length + xbowusers.length + fillallusers.length + scoutusers.length } **`,
+                    inline: true,
+                },
+                {
+                    name: " ",
+                    value: originalVoiceChannelName,
+                    inline: true,
+                },
+                {
+                    name:"\u200B",
+                    value: `🗓️ ${formattedDate}`,
+                    inline: true,
+                },
+                {
+                    name:"\u200C",
+                    value:`⏰ ${formattedTime}`,
+                    inline: true,
+                },
+                {
+                    name:"\u200D",
+                    value:`⌛ ${timestampCode}\n\u200B`,
+                    inline: true,
+                },
+                {
+                  name: `<:maintank:918772807339474984> __**MainTank**__(${maintankusers.length})`,
+                  value: ` ${maintankusers.map(user => '<:maintank:918772807339474984> ' + user.name).join("\n")}`,
+                  inline: true,
+                },
+                {
+                  name:  `<:offtank:1125035880541855825> __**OffTank**__(${offtankusers.length})`,
+                  value: ` ${offtankusers.map(user => '<:offtank:1125035880541855825> ' + user.name).join("\n")}`,
+                  inline: true,
+                },
+                {
+                  name:  `<:mainhealer:1125035848841310258> __**MainHealer**__(${mainhealerusers.length})`,
+                  value: `  ${mainhealerusers.map(user => '<:mainhealer:1125035848841310258> ' + user.name).join("\n")} \n\u200B`,
+                  inline: true,
+                },
+                {
+                  name: `<:greatarcane:1125035859067023451> __**GreatArcane**__(${greatarcaneusers.length})`,
+                  value: `  ${greatarcaneusers.map(user => '<:greatarcane:1125035859067023451> ' + user.name).join("\n")}`,
+                  inline: true,
+                },
+                {
+                  name: `<:onehandarcane:1125035868919443466> __**OneHandArcane**__(${onehandarcaneusers.length})`,
+                  value: ` ${onehandarcaneusers.map(user => '<:onehandarcane:1125035868919443466> ' + user.name).join("\n")}`,
+                  inline: true,
+                },
+                {
+                    name: " ",
+                    value: " ",
+                    inline: false,
+                },
+                {
+                  name: `<:ironroot:1125035836723953766> __**IronRoot**__(${ironrootusers.length})`,
+                  value: `  ${ironrootusers.map(user => '<:ironroot:1125035836723953766> ' + user.name).join("\n")}`,
+                  inline: true,
+                },
+                {
+                  name: `<:shadowcaller:1125035825512587274> __**ShadowCaller**__(${shadowcallerusers.length})`,
+                  value: ` ${shadowcallerusers.map(user => '<:shadowcaller:1125035825512587274> ' + user.name).join("\n")}`,
+                  inline: true,
+                },
+                {
+                  name: `<:carving:1125035809628762143> __**Carving**__(${carvingusers.length})`,
+                  value: ` ${carvingusers.map(user => '<:carving:1125035809628762143> ' + user.name).join("\n")} \n\u200B`,
+                  inline: true,
+                },
+                {
+                  name: `<:realmbreaker:1125035797767258213> __**RealmBreaker**__(${realmbreakerusers.length})`,
+                  value: ` ${realmbreakerusers.map(user => '<:realmbreaker:1125035797767258213> ' + user.name).join("\n")}`,
+                  inline: true,
+                },
+                {
+                  name: `<:spirithunter:1125035741173514302> __**SpritHunter**__(${spirithunterusers.length})`,
+                  value: ` ${spirithunterusers.map(user => '<:spirithunter:1125035741173514302> ' + user.name).join("\n")}`,
+                  inline: true,
+                },
+                {
+                  name: `<:chillhowl:1125035788392988702> __**Chillhowl**__(${chillhowleusers.length})`,
+                  value: ` ${chillhowleusers.map(user => '<:chillhowl:1125035788392988702> ' + user.name).join("\n")} \n\u200B`,
+                  inline: true,
+                },
+                {
+                  name: `<:greatfire:1125446279183486996> __**GreatFire**__(${greatfireusers.length})`,
+                  value: ` ${greatfireusers.map(user => '<:greatfire:1125446279183486996> ' + user.name).join("\n")}`,
+                  inline: true,
+                },
+                {
+                  name: `<:xbow:1125035778796441700>  __**Xbow**__(${xbowusers.length})`,
+                  value: ` ${xbowusers.map(user => '<:xbow:1125035778796441700> ' + user.name).join("\n")} \n\u200B`,
+                  inline: true,
+                },
+                {
+                  name: `<:fillall:1125430605677609033> __**Fill All**__(${fillallusers.length})`,
+                  value: ` ${fillallusers.map(user => '<:fillall:1125430605677609033> ' + user.name).join("\n")}`,
+                  inline: true,
+                },
+                {
+                  name: `<:scout:1125430590116737056> __**Scout**__(${scoutusers.length})`,
+                  value: ` ${scoutusers.map(user => '<:scout:1125430590116737056> ' + user.name).join("\n")} \n\u200B`,
+                  inline: true,
+                },
+                {
+                    name: `<:absence:1125430596794077255> __**Absence**__(${absenceusers.length})`,
+                    value: ` ${absenceusers.map(user => '<:absence:1125430596794077255> ' + user.name).join("\n")} \n\u200B`,
+                    inline: false,
+                },
+              ]),
+          ],
+      });
+      }
+      
+  } catch (error) {
+    console.error('Something went wrong when fetching the message:', error);
+    // Return as `message.author` may be undefined/null
+    return;
+  }
+}; 
