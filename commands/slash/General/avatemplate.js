@@ -985,11 +985,12 @@ module.exports.updatetemplate = async function(message, fieldname, fieldvalue) {
       });
       }
       if(fieldname == "description") {
+        const description = fieldvalue.replace(/\\n/g, '\n').replace(/\\r/g, '\r');
         message.edit({
           embeds: [
             new EmbedBuilder()
             .setTitle(originalTitle)
-            .setDescription(fieldvalue)
+            .setDescription(description)
             .setColor(originalColor)
             .setFooter({
               text: "Made By Black-Rose Bot",
