@@ -4,7 +4,7 @@ const initializeDatabase = require('../../../database/database');
 const mongoose = initializeDatabase();
 
 module.exports = {
-    name: "avatemplate",
+    name: "avatemplatenew",
     description: "Creates an AvA template!",
     type: 1,
     options: [
@@ -83,7 +83,7 @@ module.exports = {
         const mainhealeremoji = '1125035848841310258';
         const ironrootemoji = '1125035836723953766';
         const shadowcalleremoji = '1125035825512587274';
-        const carvingemoji = '1125035809628762143';
+        const bearpawsemoji = '1138429758955323402';
         const realmbreakeremoji = '1125035797767258213';
         const spirithunteremoji = '1125035741173514302';
         const chillhowlemoji = '1125035788392988702';
@@ -93,7 +93,7 @@ module.exports = {
         const scoutemoji = '1125430590116737056';
         const absenceemoji = '1125430596794077255';
 
-        const emojiarray = [maintankemoji, offtankemoji, mainhealeremoji, greatarcaneemoji, onehandarcaneemoji, ironrootemoji, shadowcalleremoji, carvingemoji, realmbreakeremoji, spirithunteremoji, chillhowlemoji, greatfireemoji, xbowemoji, fillallemoji, scoutemoji, absenceemoji];
+        const emojiarray = [maintankemoji, offtankemoji, mainhealeremoji, greatarcaneemoji, onehandarcaneemoji, ironrootemoji, shadowcalleremoji, bearpawsemoji, realmbreakeremoji, spirithunteremoji, chillhowlemoji, greatfireemoji, xbowemoji, fillallemoji, scoutemoji, absenceemoji];
 
         interaction.reply({
             embeds: [
@@ -180,7 +180,7 @@ module.exports = {
                       inline: true,
                     },
                     {
-                      name: "<:carving:1125035809628762143> __**Carving**__(0)",
+                      name: "<:bearpaws:1138429758955323402> __**Bearpaws**__(0)",
                       value: "\n\u200B",
                       inline: true,
                     },
@@ -240,7 +240,7 @@ module.exports = {
     },
 };
 
-module.exports.fetchReactions = async function(message) {
+module.exports.fetchReactions2 = async function(message) {
   try {
       // Fetch the message to ensure all properties are available
       await message.fetch();
@@ -253,7 +253,7 @@ module.exports.fetchReactions = async function(message) {
       const mainhealeremoji = '1125035848841310258';
       const ironrootemoji = '1125035836723953766';
       const shadowcalleremoji = '1125035825512587274';
-      const carvingemoji = '1125035809628762143';
+      const bearpawsemoji = '1138429758955323402';
       const realmbreakeremoji = '1125035797767258213';
       const spirithunteremoji = '1125035741173514302';
       const chillhowlemoji = '1125035788392988702';
@@ -271,7 +271,7 @@ module.exports.fetchReactions = async function(message) {
       let mainhealerusers = [];
       let ironrootusers = [];
       let shadowcallerusers = [];
-      let carvingusers = [];
+      let bearpawsusers = [];
       let realmbreakerusers = [];
       let spirithunterusers = [];
       let chillhowleusers = [];
@@ -361,12 +361,12 @@ module.exports.fetchReactions = async function(message) {
           return { id: userId, name: displayName };
         });
       }
-      if (reactionCollection.has(carvingemoji)) {
-        const carvingReaction = reactionCollection.get(carvingemoji);
-        const carvingUserIds = (await carvingReaction.users.fetch()).filter(user => !user.bot).map(user => user.id);
+      if (reactionCollection.has(bearpawsemoji)) {
+        const bearpawsReaction = reactionCollection.get(bearpawsemoji);
+        const bearpawsUserIds = (await bearpawsReaction.users.fetch()).filter(user => !user.bot).map(user => user.id);
 
         // Fetch server nicknames for the users
-        carvingusers = carvingUserIds.map(userId => {
+        bearpawsusers = bearpawsUserIds.map(userId => {
           const member = message.guild.members.cache.get(userId);
           const displayName = member ? (member.nickname || member.user.username) : "Unknown User";
           return { id: userId, name: displayName };
@@ -497,7 +497,7 @@ module.exports.fetchReactions = async function(message) {
                 },
                 {
                     name: " ",
-                    value: `<:total:1129625110605737994> ** ${maintankusers.length + offtankusers.length + greatarcaneusers.length + onehandarcaneusers.length + mainhealerusers.length + ironrootusers.length + shadowcallerusers.length + carvingusers.length + realmbreakerusers.length + spirithunterusers.length + chillhowleusers.length + greatfireusers.length + xbowusers.length + fillallusers.length + scoutusers.length } **`,
+                    value: `<:total:1129625110605737994> ** ${maintankusers.length + offtankusers.length + greatarcaneusers.length + onehandarcaneusers.length + mainhealerusers.length + ironrootusers.length + shadowcallerusers.length + bearpawsusers.length + realmbreakerusers.length + spirithunterusers.length + chillhowleusers.length + greatfireusers.length + xbowusers.length + fillallusers.length + scoutusers.length } **`,
                     inline: true,
                 },
                 {
@@ -561,8 +561,8 @@ module.exports.fetchReactions = async function(message) {
                   inline: true,
                 },
                 {
-                  name: `<:carving:1125035809628762143> __**Carving**__(${carvingusers.length})`,
-                  value: ` ${carvingusers.map(user => '<:carving:1125035809628762143> ' + user.name).join("\n")} \n\u200B`,
+                  name: `<:bearpaws:1138429758955323402> __**Bearpaws**__(${bearpawsusers.length})`,
+                  value: ` ${bearpawsusers.map(user => '<:bearpaws:1138429758955323402> ' + user.name).join("\n")} \n\u200B`,
                   inline: true,
                 },
                 {
@@ -615,7 +615,7 @@ module.exports.fetchReactions = async function(message) {
   }
 }; 
 
-module.exports.updatetemplate = async function(message, fieldname, fieldvalue) {
+module.exports.updatetemplate2 = async function(message, fieldname, fieldvalue) {
   try {
       // Fetch the message to ensure all properties are available
       await message.fetch();
@@ -628,7 +628,7 @@ module.exports.updatetemplate = async function(message, fieldname, fieldvalue) {
       const mainhealeremoji = '1125035848841310258';
       const ironrootemoji = '1125035836723953766';
       const shadowcalleremoji = '1125035825512587274';
-      const carvingemoji = '1125035809628762143';
+      const bearpawsemoji = '1138429758955323402';
       const realmbreakeremoji = '1125035797767258213';
       const spirithunteremoji = '1125035741173514302';
       const chillhowlemoji = '1125035788392988702';
@@ -646,7 +646,7 @@ module.exports.updatetemplate = async function(message, fieldname, fieldvalue) {
       let mainhealerusers = [];
       let ironrootusers = [];
       let shadowcallerusers = [];
-      let carvingusers = [];
+      let bearpawsusers = [];
       let realmbreakerusers = [];
       let spirithunterusers = [];
       let chillhowleusers = [];
@@ -736,12 +736,12 @@ module.exports.updatetemplate = async function(message, fieldname, fieldvalue) {
           return { id: userId, name: displayName };
         });
       }
-      if (reactionCollection.has(carvingemoji)) {
-        const carvingReaction = reactionCollection.get(carvingemoji);
-        const carvingUserIds = (await carvingReaction.users.fetch()).filter(user => !user.bot).map(user => user.id);
+      if (reactionCollection.has(bearpawsemoji)) {
+        const bearpawsReaction = reactionCollection.get(bearpawsemoji);
+        const bearpawsUserIds = (await bearpawsReaction.users.fetch()).filter(user => !user.bot).map(user => user.id);
 
         // Fetch server nicknames for the users
-        carvingusers = carvingUserIds.map(userId => {
+        bearpawsusers = bearpawsUserIds.map(userId => {
           const member = message.guild.members.cache.get(userId);
           const displayName = member ? (member.nickname || member.user.username) : "Unknown User";
           return { id: userId, name: displayName };
@@ -872,7 +872,7 @@ module.exports.updatetemplate = async function(message, fieldname, fieldvalue) {
                 },
                 {
                     name: " ",
-                    value: `<:total:1129625110605737994> ** ${maintankusers.length + offtankusers.length + greatarcaneusers.length + onehandarcaneusers.length + mainhealerusers.length + ironrootusers.length + shadowcallerusers.length + carvingusers.length + realmbreakerusers.length + spirithunterusers.length + chillhowleusers.length + greatfireusers.length + xbowusers.length + fillallusers.length + scoutusers.length } **`,
+                    value: `<:total:1129625110605737994> ** ${maintankusers.length + offtankusers.length + greatarcaneusers.length + onehandarcaneusers.length + mainhealerusers.length + ironrootusers.length + shadowcallerusers.length + bearpawsusers.length + realmbreakerusers.length + spirithunterusers.length + chillhowleusers.length + greatfireusers.length + xbowusers.length + fillallusers.length + scoutusers.length } **`,
                     inline: true,
                 },
                 {
@@ -936,8 +936,8 @@ module.exports.updatetemplate = async function(message, fieldname, fieldvalue) {
                   inline: true,
                 },
                 {
-                  name: `<:carving:1125035809628762143> __**Carving**__(${carvingusers.length})`,
-                  value: ` ${carvingusers.map(user => '<:carving:1125035809628762143> ' + user.name).join("\n")} \n\u200B`,
+                  name: `<:bearpaws:1138429758955323402> __**Bearpaws**__(${bearpawsusers.length})`,
+                  value: ` ${bearpawsusers.map(user => '<:bearpaws:1138429758955323402> ' + user.name).join("\n")} \n\u200B`,
                   inline: true,
                 },
                 {
@@ -1007,7 +1007,7 @@ module.exports.updatetemplate = async function(message, fieldname, fieldvalue) {
                 },
                 {
                     name: " ",
-                    value: `<:total:1129625110605737994> ** ${maintankusers.length + offtankusers.length + greatarcaneusers.length + onehandarcaneusers.length + mainhealerusers.length + ironrootusers.length + shadowcallerusers.length + carvingusers.length + realmbreakerusers.length + spirithunterusers.length + chillhowleusers.length + greatfireusers.length + xbowusers.length + fillallusers.length + scoutusers.length } **`,
+                    value: `<:total:1129625110605737994> ** ${maintankusers.length + offtankusers.length + greatarcaneusers.length + onehandarcaneusers.length + mainhealerusers.length + ironrootusers.length + shadowcallerusers.length + bearpawsusers.length + realmbreakerusers.length + spirithunterusers.length + chillhowleusers.length + greatfireusers.length + xbowusers.length + fillallusers.length + scoutusers.length } **`,
                     inline: true,
                 },
                 {
@@ -1071,8 +1071,8 @@ module.exports.updatetemplate = async function(message, fieldname, fieldvalue) {
                   inline: true,
                 },
                 {
-                  name: `<:carving:1125035809628762143> __**Carving**__(${carvingusers.length})`,
-                  value: ` ${carvingusers.map(user => '<:carving:1125035809628762143> ' + user.name).join("\n")} \n\u200B`,
+                  name: `<:bearpaws:1138429758955323402> __**Bearpaws**__(${bearpawsusers.length})`,
+                  value: ` ${bearpawsusers.map(user => '<:bearpaws:1138429758955323402> ' + user.name).join("\n")} \n\u200B`,
                   inline: true,
                 },
                 {
@@ -1141,7 +1141,7 @@ module.exports.updatetemplate = async function(message, fieldname, fieldvalue) {
                 },
                 {
                     name: " ",
-                    value: `<:total:1129625110605737994> ** ${maintankusers.length + offtankusers.length + greatarcaneusers.length + onehandarcaneusers.length + mainhealerusers.length + ironrootusers.length + shadowcallerusers.length + carvingusers.length + realmbreakerusers.length + spirithunterusers.length + chillhowleusers.length + greatfireusers.length + xbowusers.length + fillallusers.length + scoutusers.length } **`,
+                    value: `<:total:1129625110605737994> ** ${maintankusers.length + offtankusers.length + greatarcaneusers.length + onehandarcaneusers.length + mainhealerusers.length + ironrootusers.length + shadowcallerusers.length + bearpawsusers.length + realmbreakerusers.length + spirithunterusers.length + chillhowleusers.length + greatfireusers.length + xbowusers.length + fillallusers.length + scoutusers.length } **`,
                     inline: true,
                 },
                 {
@@ -1205,8 +1205,8 @@ module.exports.updatetemplate = async function(message, fieldname, fieldvalue) {
                   inline: true,
                 },
                 {
-                  name: `<:carving:1125035809628762143> __**Carving**__(${carvingusers.length})`,
-                  value: ` ${carvingusers.map(user => '<:carving:1125035809628762143> ' + user.name).join("\n")} \n\u200B`,
+                  name: `<:bearpaws:1138429758955323402> __**Bearpaws**__(${bearpawsusers.length})`,
+                  value: ` ${bearpawsusers.map(user => '<:bearpaws:1138429758955323402> ' + user.name).join("\n")} \n\u200B`,
                   inline: true,
                 },
                 {
@@ -1296,7 +1296,7 @@ module.exports.updatetemplate = async function(message, fieldname, fieldvalue) {
                 },
                 {
                     name: " ",
-                    value: `<:total:1129625110605737994> ** ${maintankusers.length + offtankusers.length + greatarcaneusers.length + onehandarcaneusers.length + mainhealerusers.length + ironrootusers.length + shadowcallerusers.length + carvingusers.length + realmbreakerusers.length + spirithunterusers.length + chillhowleusers.length + greatfireusers.length + xbowusers.length + fillallusers.length + scoutusers.length } **`,
+                    value: `<:total:1129625110605737994> ** ${maintankusers.length + offtankusers.length + greatarcaneusers.length + onehandarcaneusers.length + mainhealerusers.length + ironrootusers.length + shadowcallerusers.length + bearpawsusers.length + realmbreakerusers.length + spirithunterusers.length + chillhowleusers.length + greatfireusers.length + xbowusers.length + fillallusers.length + scoutusers.length } **`,
                     inline: true,
                 },
                 {
@@ -1360,8 +1360,8 @@ module.exports.updatetemplate = async function(message, fieldname, fieldvalue) {
                   inline: true,
                 },
                 {
-                  name: `<:carving:1125035809628762143> __**Carving**__(${carvingusers.length})`,
-                  value: ` ${carvingusers.map(user => '<:carving:1125035809628762143> ' + user.name).join("\n")} \n\u200B`,
+                  name: `<:bearpaws:1138429758955323402> __**Bearpaws**__(${bearpawsusers.length})`,
+                  value: ` ${bearpawsusers.map(user => '<:bearpaws:1138429758955323402> ' + user.name).join("\n")} \n\u200B`,
                   inline: true,
                 },
                 {
@@ -1407,8 +1407,7 @@ module.exports.updatetemplate = async function(message, fieldname, fieldvalue) {
               ]),
           ],
       });
-      }
-      
+    }
   } catch (error) {
     console.error('Something went wrong when fetching the message:', error);
     // Return as `message.author` may be undefined/null
