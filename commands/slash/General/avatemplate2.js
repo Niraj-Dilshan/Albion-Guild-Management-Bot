@@ -102,7 +102,7 @@ module.exports = {
                 .setDescription(`${description}`)
                 .setColor("Gold")
                 .setFooter({
-                  text: "Made By Black-Rose Bot",
+                  text: "Made By INFINITY",
                   iconURL:
                     "https://cdn.discordapp.com/attachments/1073378626080362516/1076777453709688882/AdobeStock_555578592.jpeg",
                 })
@@ -483,7 +483,7 @@ module.exports.fetchReactions2 = async function(message) {
             .setDescription(originalDescription)
             .setColor(originalColor)
             .setFooter({
-              text: "Made By Black-Rose Bot",
+              text: "Made By INFINITY",
               iconURL:
                 "https://cdn.discordapp.com/attachments/1073378626080362516/1076777453709688882/AdobeStock_555578592.jpeg",
             })
@@ -858,7 +858,7 @@ module.exports.updatetemplate2 = async function(message, fieldname, fieldvalue) 
             .setDescription(originalDescription)
             .setColor(originalColor)
             .setFooter({
-              text: "Made By Black-Rose Bot",
+              text: "Made By INFINITY",
               iconURL:
                 "https://cdn.discordapp.com/attachments/1073378626080362516/1076777453709688882/AdobeStock_555578592.jpeg",
             })
@@ -993,7 +993,7 @@ module.exports.updatetemplate2 = async function(message, fieldname, fieldvalue) 
             .setDescription(description)
             .setColor(originalColor)
             .setFooter({
-              text: "Made By Black-Rose Bot",
+              text: "Made By INFINITY",
               iconURL:
                 "https://cdn.discordapp.com/attachments/1073378626080362516/1076777453709688882/AdobeStock_555578592.jpeg",
             })
@@ -1127,7 +1127,7 @@ module.exports.updatetemplate2 = async function(message, fieldname, fieldvalue) 
             .setDescription(originalDescription)
             .setColor(originalColor)
             .setFooter({
-              text: "Made By Black-Rose Bot",
+              text: "Made By INFINITY",
               iconURL:
                 "https://cdn.discordapp.com/attachments/1073378626080362516/1076777453709688882/AdobeStock_555578592.jpeg",
             })
@@ -1282,7 +1282,7 @@ module.exports.updatetemplate2 = async function(message, fieldname, fieldvalue) 
             .setDescription(originalDescription)
             .setColor(originalColor)
             .setFooter({
-              text: "Made By Black-Rose Bot",
+              text: "Made By INFINITY",
               iconURL:
                 "https://cdn.discordapp.com/attachments/1073378626080362516/1076777453709688882/AdobeStock_555578592.jpeg",
             })

@@ -43,7 +43,7 @@ module.exports = {
         const message = await channel.messages.fetch(messageId);
 
         // Ensure this is an AvA message
-        if (!message.embeds || message.embeds.length === 0 || !message.embeds[0].footer || message.embeds[0].footer.text !== "Made By Black-Rose Bot") {
+        if (!message.embeds || message.embeds.length === 0 || !message.embeds[0].footer || message.embeds[0].footer.text !== "Made By INFINITY") {
             return interaction.reply("This message is not an AvA message.");
         }
         updatetemplate2(message, field, change);

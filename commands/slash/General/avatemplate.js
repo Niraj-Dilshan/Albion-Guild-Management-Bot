@@ -51,7 +51,6 @@ module.exports = {
     run: async (client, interaction, config) => {        
         const member = interaction.member;
         if (!config.Users.RAIDLEADERS.some(role => member.roles.cache.has(role)) && member.id !== config.Users.OWNERS) {
-          console.log(config.Users.OWNERS)
           return interaction.reply("Only raidleaders and the owner can execute this command.");
       }
         const guildid = interaction.guild.id;
@@ -102,7 +101,7 @@ module.exports = {
                 .setDescription(`${description}`)
                 .setColor("Gold")
                 .setFooter({
-                  text: "Made By Black-Rose Bot",
+                  text: "Made By INFINITY",
                   iconURL:
                     "https://cdn.discordapp.com/attachments/1073378626080362516/1076777453709688882/AdobeStock_555578592.jpeg",
                 })
@@ -483,7 +482,7 @@ module.exports.fetchReactions = async function(message) {
             .setDescription(originalDescription)
             .setColor(originalColor)
             .setFooter({
-              text: "Made By Black-Rose Bot",
+              text: "Made By INFINITY",
               iconURL:
                 "https://cdn.discordapp.com/attachments/1073378626080362516/1076777453709688882/AdobeStock_555578592.jpeg",
             })
@@ -858,7 +857,7 @@ module.exports.updatetemplate = async function(message, fieldname, fieldvalue) {
             .setDescription(originalDescription)
             .setColor(originalColor)
             .setFooter({
-              text: "Made By Black-Rose Bot",
+              text: "Made By INFINITY",
               iconURL:
                 "https://cdn.discordapp.com/attachments/1073378626080362516/1076777453709688882/AdobeStock_555578592.jpeg",
             })
@@ -993,7 +992,7 @@ module.exports.updatetemplate = async function(message, fieldname, fieldvalue) {
             .setDescription(description)
             .setColor(originalColor)
             .setFooter({
-              text: "Made By Black-Rose Bot",
+              text: "Made By INFINITY",
               iconURL:
                 "https://cdn.discordapp.com/attachments/1073378626080362516/1076777453709688882/AdobeStock_555578592.jpeg",
             })
@@ -1127,7 +1126,7 @@ module.exports.updatetemplate = async function(message, fieldname, fieldvalue) {
             .setDescription(originalDescription)
             .setColor(originalColor)
             .setFooter({
-              text: "Made By Black-Rose Bot",
+              text: "Made By INFINITY",
               iconURL:
                 "https://cdn.discordapp.com/attachments/1073378626080362516/1076777453709688882/AdobeStock_555578592.jpeg",
             })
@@ -1282,7 +1281,7 @@ module.exports.updatetemplate = async function(message, fieldname, fieldvalue) {
             .setDescription(originalDescription)
             .setColor(originalColor)
             .setFooter({
-              text: "Made By Black-Rose Bot",
+              text: "Made By INFINITY",
               iconURL:
                 "https://cdn.discordapp.com/attachments/1073378626080362516/1076777453709688882/AdobeStock_555578592.jpeg",
             })
