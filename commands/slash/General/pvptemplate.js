@@ -39,12 +39,6 @@ module.exports = {
             type: 3,
             required: true
         },
-        {
-            name: "voicechanel",
-            description: "Voice chanel for the PvP",
-            type: 3,
-            required: true
-        }
     ],
     permissions: {
         DEFAULT_MEMBER_PERMISSIONS: "SendMessages"
@@ -54,16 +48,12 @@ module.exports = {
         if (!member.roles.cache.has('1068815986121244692') && member.id !== config.Users.OWNERS) {
           return interaction.reply("Only Content Creator and the owner can execute this command.");
       }
-        const guildid = interaction.guild.id;
         const name = interaction.options.getString("name");
         const date = interaction.options.getString("date");
         const time = interaction.options.getString("time");
         const descriptionInput = interaction.options.getString("description");
         const description = descriptionInput.replace(/\\n/g, '\n').replace(/\\r/g, '\r');
         const image = interaction.options.getString("image");
-        const voiceChannelName = interaction.options.getString("voicechanel");
-        const raidleader = interaction.guild.members.cache.get(member.id);
-        const raidleadername = raidleader ? (raidleader.nickname || raidleader.user.username) : "Unknown User";
 
         // Convert the provided date and time to a JavaScript Date object
         const dateTimeString = `${date} ${time}`;
@@ -701,6 +691,7 @@ module.exports.fetchPvPReactions = async function(message) {
               ]),
           ],
       });
+      console.log("updated pvp template reactions");
   } catch (error) {
     console.error('Something went wrong when fetching the message:', error);
     // Return as `message.author` may be undefined/null
