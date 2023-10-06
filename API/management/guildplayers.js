@@ -1,6 +1,6 @@
 const { SlashCommandBuilder } = require('discord.js');
 const axios = require('axios');
-const fs = require('fs');
+const {createWriteStream, unlink} = require('fs');
 
 module.exports = {
   data: new SlashCommandBuilder()
@@ -51,7 +51,7 @@ module.exports = {
       await interaction.reply('Player information has been sent to this channel.');
   
       // Delete the txt file after it has been sent.
-      fs.unlink(fileName, (err) => {
+      unlink(fileName, (err) => {
         if (err) {
           console.error(err);
         }

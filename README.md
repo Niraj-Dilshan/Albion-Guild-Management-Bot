@@ -17,9 +17,9 @@ https://github.com/niraj-dilshan/albion-guild-management-bot.git
 ```
 cd albion-guild-management-bot && npm i
 ```
-3. Copy example.env file as .env and add relevent details
+3. Copy .env.example file as .env and add relevent details
 ```
-cp example.env .env
+cp .env.example .env
 ```
 4. Run the bot
 ```
