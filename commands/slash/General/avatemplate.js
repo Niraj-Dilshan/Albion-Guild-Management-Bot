@@ -94,11 +94,13 @@ module.exports = {
     const mainhealeremoji = "1125035848841310258";
     const ironrootemoji = "1125035836723953766";
     const shadowcalleremoji = "1125035825512587274";
-    const carvingemoji = "1125035809628762143";
     const realmbreakeremoji = "1125035797767258213";
+    const earthruneemoji = "1211671910266699827";
     const spirithunteremoji = "1125035741173514302";
+    const carvingemoji = "1125035809628762143";
     const chillhowlemoji = "1125035788392988702";
     const greatfireemoji = "1125446279183486996";
+    const lightcalleremoji = "1211672001874501632";
     const xbowemoji = "1125035778796441700";
     const fillallemoji = "1125430605677609033";
     const scoutemoji = "1125430590116737056";
@@ -112,11 +114,13 @@ module.exports = {
       onehandarcaneemoji,
       ironrootemoji,
       shadowcalleremoji,
-      carvingemoji,
       realmbreakeremoji,
+      earthruneemoji,
       spirithunteremoji,
+      carvingemoji,
       chillhowlemoji,
       greatfireemoji,
+      lightcalleremoji,
       xbowemoji,
       fillallemoji,
       scoutemoji,
@@ -208,12 +212,12 @@ module.exports = {
               inline: true,
             },
             {
-              name: "<:carving:1125035809628762143> __**Carving**__(0)",
+              name: "<:realmbreaker:1125035797767258213> __**RealmBreaker**__(0)",
               value: "\n\u200B",
               inline: true,
             },
             {
-              name: "<:realmbreaker:1125035797767258213> __**RealmBreaker**__(0)",
+              name: "<:Earthrune:1211671910266699827> __**EarthRune**__(0)",
               value: " ",
               inline: true,
             },
@@ -223,18 +227,28 @@ module.exports = {
               inline: true,
             },
             {
+              name: "<:carving:1125035809628762143> __**Carving**__(0)",
+              value: "\n\u200B",
+              inline: true,
+            },
+            {
               name: "<:chillhowl:1125035788392988702> __**Frost**__(0)",
               value: "\n\u200B",
               inline: true,
             },
             {
-              name: "<:greatfire:1125446279183486996> __**GreatFire**__(0)",
+              name: "<:greatfire:1125446279183486996> __**Fire**__(0)",
               value: " ",
               inline: true,
             },
             {
-              name: "<:xbow:1125035778796441700>  __**Xbow**__(0)",
+              name: "<:Lightcaller:1211672001874501632>  __**Lightcaller**__(0)",
               value: "\n\u200B",
+              inline: true,
+            },
+            {
+              name: "<:xbow:1125035778796441700>  __**Xbow**__(0)",
+              value: " ",
               inline: true,
             },
             {
@@ -292,11 +306,13 @@ module.exports.fetchReactions = async function (message) {
     const mainhealeremoji = "1125035848841310258";
     const ironrootemoji = "1125035836723953766";
     const shadowcalleremoji = "1125035825512587274";
-    const carvingemoji = "1125035809628762143";
     const realmbreakeremoji = "1125035797767258213";
+    const earthruneemoji = "1211671910266699827";
     const spirithunteremoji = "1125035741173514302";
+    const carvingemoji = "1125035809628762143";
     const chillhowlemoji = "1125035788392988702";
     const greatfireemoji = "1125446279183486996";
+    const lightcalleremoji = "1211672001874501632";
     const xbowemoji = "1125035778796441700";
     const fillallemoji = "1125430605677609033";
     const scoutemoji = "1125430590116737056";
@@ -310,11 +326,13 @@ module.exports.fetchReactions = async function (message) {
     let mainhealerusers = [];
     let ironrootusers = [];
     let shadowcallerusers = [];
-    let carvingusers = [];
     let realmbreakerusers = [];
+    let earthruneusers = [];
     let spirithunterusers = [];
+    let carvingusers = [];
     let chillhowleusers = [];
     let greatfireusers = [];
+    let lightcallerusers = [];
     let xbowusers = [];
     let fillallusers = [];
     let scoutusers = [];
@@ -428,21 +446,6 @@ module.exports.fetchReactions = async function (message) {
         return { id: userId, name: displayName };
       });
     }
-    if (reactionCollection.has(carvingemoji)) {
-      const carvingReaction = reactionCollection.get(carvingemoji);
-      const carvingUserIds = (await carvingReaction.users.fetch())
-        .filter((user) => !user.bot)
-        .map((user) => user.id);
-
-      // Fetch server nicknames for the users
-      carvingusers = carvingUserIds.map((userId) => {
-        const member = message.guild.members.cache.get(userId);
-        const displayName = member
-          ? member.nickname || member.user.username
-          : "Unknown User";
-        return { id: userId, name: displayName };
-      });
-    }
     if (reactionCollection.has(realmbreakeremoji)) {
       const realmbreakerReaction = reactionCollection.get(realmbreakeremoji);
       const realmbreakerUserIds = (await realmbreakerReaction.users.fetch())
@@ -458,6 +461,21 @@ module.exports.fetchReactions = async function (message) {
         return { id: userId, name: displayName };
       });
     }
+    if (reactionCollection.has(earthruneemoji)) {
+      const earthruneReaction = reactionCollection.get(earthruneemoji);
+      const earthruneUserIds = (await earthruneReaction.users.fetch())
+        .filter((user) => !user.bot)
+        .map((user) => user.id);
+
+      // Fetch server nicknames for the users
+      earthruneusers = earthruneUserIds.map((userId) => {
+        const member = message.guild.members.cache.get(userId);
+        const displayName = member
+          ? member.nickname || member.user.username
+          : "Unknown User";
+        return { id: userId, name: displayName };
+      });
+    }
     if (reactionCollection.has(spirithunteremoji)) {
       const spirithunterReaction = reactionCollection.get(spirithunteremoji);
       const spirithunterUserIds = (await spirithunterReaction.users.fetch())
@@ -466,6 +484,21 @@ module.exports.fetchReactions = async function (message) {
 
       // Fetch server nicknames for the users
       spirithunterusers = spirithunterUserIds.map((userId) => {
+        const member = message.guild.members.cache.get(userId);
+        const displayName = member
+          ? member.nickname || member.user.username
+          : "Unknown User";
+        return { id: userId, name: displayName };
+      });
+    }
+    if (reactionCollection.has(carvingemoji)) {
+      const carvingReaction = reactionCollection.get(carvingemoji);
+      const carvingUserIds = (await carvingReaction.users.fetch())
+        .filter((user) => !user.bot)
+        .map((user) => user.id);
+
+      // Fetch server nicknames for the users
+      carvingusers = carvingUserIds.map((userId) => {
         const member = message.guild.members.cache.get(userId);
         const displayName = member
           ? member.nickname || member.user.username
@@ -496,6 +529,21 @@ module.exports.fetchReactions = async function (message) {
 
       // Fetch server nicknames for the users
       greatfireusers = greatfireUserIds.map((userId) => {
+        const member = message.guild.members.cache.get(userId);
+        const displayName = member
+          ? member.nickname || member.user.username
+          : "Unknown User";
+        return { id: userId, name: displayName };
+      });
+    }
+    if (reactionCollection.has(lightcalleremoji)) {
+      const lightcallerReaction = reactionCollection.get(lightcalleremoji);
+      const lightcallerUserIds = (await lightcallerReaction.users.fetch())
+        .filter((user) => !user.bot)
+        .map((user) => user.id);
+
+      // Fetch server nicknames for the users
+      lightcallerusers = lightcallerUserIds.map((userId) => {
         const member = message.guild.members.cache.get(userId);
         const displayName = member
           ? member.nickname || member.user.username
@@ -606,11 +654,13 @@ module.exports.fetchReactions = async function (message) {
                 mainhealerusers.length +
                 ironrootusers.length +
                 shadowcallerusers.length +
-                carvingusers.length +
                 realmbreakerusers.length +
+                earthruneusers.length +
                 spirithunterusers.length +
+                carvingusers.length +
                 chillhowleusers.length +
                 greatfireusers.length +
+                lightcallerusers.length +
                 xbowusers.length +
                 fillallusers.length +
                 scoutusers.length
@@ -698,19 +748,19 @@ module.exports.fetchReactions = async function (message) {
               inline: true,
             },
             {
-              name: `<:carving:1125035809628762143> __**Carving**__(${carvingusers.length})`,
-              value: ` ${carvingusers
-                .map((user) => "<:carving:1125035809628762143> " + user.name)
-                .join("\n")} \n\u200B`,
-              inline: true,
-            },
-            {
               name: `<:realmbreaker:1125035797767258213> __**RealmBreaker**__(${realmbreakerusers.length})`,
               value: ` ${realmbreakerusers
                 .map(
                   (user) => "<:realmbreaker:1125035797767258213> " + user.name
                 )
                 .join("\n")}`,
+              inline: true,
+            },
+            {
+              name: `<:Earthrune:1211671910266699827> __**EarthRune**__(${earthruneusers.length})`,
+              value: ` ${earthruneusers
+                .map((user) => "<:Earthrune:1211671910266699827> " + user.name)
+                .join("\n")} \n\u200B`,
               inline: true,
             },
             {
@@ -723,6 +773,13 @@ module.exports.fetchReactions = async function (message) {
               inline: true,
             },
             {
+              name: `<:carving:1125035809628762143> __**Carving**__(${carvingusers.length})`,
+              value: ` ${carvingusers
+                .map((user) => "<:carving:1125035809628762143> " + user.name)
+                .join("\n")} \n\u200B`,
+              inline: true,
+            },
+            {
               name: `<:chillhowl:1125035788392988702> __**Frost**__(${chillhowleusers.length})`,
               value: ` ${chillhowleusers
                 .map((user) => "<:chillhowl:1125035788392988702> " + user.name)
@@ -730,10 +787,17 @@ module.exports.fetchReactions = async function (message) {
               inline: true,
             },
             {
-              name: `<:greatfire:1125446279183486996> __**GreatFire**__(${greatfireusers.length})`,
+              name: `<:greatfire:1125446279183486996> __**Fire**__(${greatfireusers.length})`,
               value: ` ${greatfireusers
                 .map((user) => "<:greatfire:1125446279183486996> " + user.name)
                 .join("\n")}`,
+              inline: true,
+            },
+            {
+              name: `<:Lightcaller:1211672001874501632>  __**Lightcaller**__(${lightcallerusers.length})`,
+              value: ` ${lightcallerusers
+                .map((user) => "<:Lightcaller:1211672001874501632> " + user.name)
+                .join("\n")} \n\u200B`,
               inline: true,
             },
             {
@@ -791,11 +855,13 @@ module.exports.updatetemplate = async function (
     const mainhealeremoji = "1125035848841310258";
     const ironrootemoji = "1125035836723953766";
     const shadowcalleremoji = "1125035825512587274";
-    const carvingemoji = "1125035809628762143";
     const realmbreakeremoji = "1125035797767258213";
+    const earthruneemoji = "1211671910266699827";
     const spirithunteremoji = "1125035741173514302";
+    const carvingemoji = "1125035809628762143";
     const chillhowlemoji = "1125035788392988702";
     const greatfireemoji = "1125446279183486996";
+    const lightcalleremoji = "1211672001874501632";
     const xbowemoji = "1125035778796441700";
     const fillallemoji = "1125430605677609033";
     const scoutemoji = "1125430590116737056";
@@ -809,11 +875,13 @@ module.exports.updatetemplate = async function (
     let mainhealerusers = [];
     let ironrootusers = [];
     let shadowcallerusers = [];
-    let carvingusers = [];
     let realmbreakerusers = [];
+    let earthruneusers = [];
     let spirithunterusers = [];
+    let carvingusers = [];
     let chillhowleusers = [];
     let greatfireusers = [];
+    let lightcallerusers = [];
     let xbowusers = [];
     let fillallusers = [];
     let scoutusers = [];
@@ -927,21 +995,6 @@ module.exports.updatetemplate = async function (
         return { id: userId, name: displayName };
       });
     }
-    if (reactionCollection.has(carvingemoji)) {
-      const carvingReaction = reactionCollection.get(carvingemoji);
-      const carvingUserIds = (await carvingReaction.users.fetch())
-        .filter((user) => !user.bot)
-        .map((user) => user.id);
-
-      // Fetch server nicknames for the users
-      carvingusers = carvingUserIds.map((userId) => {
-        const member = message.guild.members.cache.get(userId);
-        const displayName = member
-          ? member.nickname || member.user.username
-          : "Unknown User";
-        return { id: userId, name: displayName };
-      });
-    }
     if (reactionCollection.has(realmbreakeremoji)) {
       const realmbreakerReaction = reactionCollection.get(realmbreakeremoji);
       const realmbreakerUserIds = (await realmbreakerReaction.users.fetch())
@@ -957,6 +1010,21 @@ module.exports.updatetemplate = async function (
         return { id: userId, name: displayName };
       });
     }
+    if (reactionCollection.has(earthruneemoji)) {
+      const earthruneReaction = reactionCollection.get(earthruneemoji);
+      const earthruneUserIds = (await earthruneReaction.users.fetch())
+        .filter((user) => !user.bot)
+        .map((user) => user.id);
+
+      // Fetch server nicknames for the users
+      earthruneusers = earthruneUserIds.map((userId) => {
+        const member = message.guild.members.cache.get(userId);
+        const displayName = member
+          ? member.nickname || member.user.username
+          : "Unknown User";
+        return { id: userId, name: displayName };
+      });
+    }
     if (reactionCollection.has(spirithunteremoji)) {
       const spirithunterReaction = reactionCollection.get(spirithunteremoji);
       const spirithunterUserIds = (await spirithunterReaction.users.fetch())
@@ -965,6 +1033,21 @@ module.exports.updatetemplate = async function (
 
       // Fetch server nicknames for the users
       spirithunterusers = spirithunterUserIds.map((userId) => {
+        const member = message.guild.members.cache.get(userId);
+        const displayName = member
+          ? member.nickname || member.user.username
+          : "Unknown User";
+        return { id: userId, name: displayName };
+      });
+    }
+    if (reactionCollection.has(carvingemoji)) {
+      const carvingReaction = reactionCollection.get(carvingemoji);
+      const carvingUserIds = (await carvingReaction.users.fetch())
+        .filter((user) => !user.bot)
+        .map((user) => user.id);
+
+      // Fetch server nicknames for the users
+      carvingusers = carvingUserIds.map((userId) => {
         const member = message.guild.members.cache.get(userId);
         const displayName = member
           ? member.nickname || member.user.username
@@ -995,6 +1078,21 @@ module.exports.updatetemplate = async function (
 
       // Fetch server nicknames for the users
       greatfireusers = greatfireUserIds.map((userId) => {
+        const member = message.guild.members.cache.get(userId);
+        const displayName = member
+          ? member.nickname || member.user.username
+          : "Unknown User";
+        return { id: userId, name: displayName };
+      });
+    }
+    if (reactionCollection.has(lightcalleremoji)) {
+      const lightcallerReaction = reactionCollection.get(lightcalleremoji);
+      const lightcallerUserIds = (await lightcallerReaction.users.fetch())
+        .filter((user) => !user.bot)
+        .map((user) => user.id);
+
+      // Fetch server nicknames for the users
+      lightcallerusers = lightcallerUserIds.map((userId) => {
         const member = message.guild.members.cache.get(userId);
         const displayName = member
           ? member.nickname || member.user.username
@@ -1105,11 +1203,13 @@ module.exports.updatetemplate = async function (
                   mainhealerusers.length +
                   ironrootusers.length +
                   shadowcallerusers.length +
-                  carvingusers.length +
                   realmbreakerusers.length +
+                  earthruneusers.length +
                   spirithunterusers.length +
+                  carvingusers.length +
                   chillhowleusers.length +
                   greatfireusers.length +
+                  lightcallerusers.length +
                   xbowusers.length +
                   fillallusers.length +
                   scoutusers.length
@@ -1200,19 +1300,19 @@ module.exports.updatetemplate = async function (
                 inline: true,
               },
               {
-                name: `<:carving:1125035809628762143> __**Carving**__(${carvingusers.length})`,
-                value: ` ${carvingusers
-                  .map((user) => "<:carving:1125035809628762143> " + user.name)
-                  .join("\n")} \n\u200B`,
-                inline: true,
-              },
-              {
                 name: `<:realmbreaker:1125035797767258213> __**RealmBreaker**__(${realmbreakerusers.length})`,
                 value: ` ${realmbreakerusers
                   .map(
                     (user) => "<:realmbreaker:1125035797767258213> " + user.name
                   )
                   .join("\n")}`,
+                inline: true,
+              },
+              {
+                name: `<:Earthrune:1211671910266699827> __**EarthRune**__(${earthruneusers.length})`,
+                value: ` ${earthruneusers
+                  .map((user) => "<:Earthrune:1211671910266699827> " + user.name)
+                  .join("\n")} \n\u200B`,
                 inline: true,
               },
               {
@@ -1225,6 +1325,13 @@ module.exports.updatetemplate = async function (
                 inline: true,
               },
               {
+                name: `<:carving:1125035809628762143> __**Carving**__(${carvingusers.length})`,
+                value: ` ${carvingusers
+                  .map((user) => "<:carving:1125035809628762143> " + user.name)
+                  .join("\n")} \n\u200B`,
+                inline: true,
+              },
+              {
                 name: `<:chillhowl:1125035788392988702> __**Frost**__(${chillhowleusers.length})`,
                 value: ` ${chillhowleusers
                   .map(
@@ -1234,12 +1341,19 @@ module.exports.updatetemplate = async function (
                 inline: true,
               },
               {
-                name: `<:greatfire:1125446279183486996> __**GreatFire**__(${greatfireusers.length})`,
+                name: `<:greatfire:1125446279183486996> __**Fire**__(${greatfireusers.length})`,
                 value: ` ${greatfireusers
                   .map(
                     (user) => "<:greatfire:1125446279183486996> " + user.name
                   )
                   .join("\n")}`,
+                inline: true,
+              },
+              {
+                name: `<:Lightcaller:1211672001874501632>  __**Lightcaller**__(${lightcallerusers.length})`,
+                value: ` ${lightcallerusers
+                  .map((user) => "<:Lightcaller:1211672001874501632> " + user.name)
+                  .join("\n")} \n\u200B`,
                 inline: true,
               },
               {
@@ -1307,11 +1421,13 @@ module.exports.updatetemplate = async function (
                   mainhealerusers.length +
                   ironrootusers.length +
                   shadowcallerusers.length +
-                  carvingusers.length +
                   realmbreakerusers.length +
+                  earthruneusers.length +
                   spirithunterusers.length +
+                  carvingusers.length +
                   chillhowleusers.length +
                   greatfireusers.length +
+                  lightcallerusers.length +
                   xbowusers.length +
                   fillallusers.length +
                   scoutusers.length
@@ -1402,19 +1518,19 @@ module.exports.updatetemplate = async function (
                 inline: true,
               },
               {
-                name: `<:carving:1125035809628762143> __**Carving**__(${carvingusers.length})`,
-                value: ` ${carvingusers
-                  .map((user) => "<:carving:1125035809628762143> " + user.name)
-                  .join("\n")} \n\u200B`,
-                inline: true,
-              },
-              {
                 name: `<:realmbreaker:1125035797767258213> __**RealmBreaker**__(${realmbreakerusers.length})`,
                 value: ` ${realmbreakerusers
                   .map(
                     (user) => "<:realmbreaker:1125035797767258213> " + user.name
                   )
                   .join("\n")}`,
+                inline: true,
+              },
+              {
+                name: `<:Earthrune:1211671910266699827> __**EarthRune**__(${earthruneusers.length})`,
+                value: ` ${earthruneusers
+                  .map((user) => "<:Earthrune:1211671910266699827> " + user.name)
+                  .join("\n")} \n\u200B`,
                 inline: true,
               },
               {
@@ -1427,6 +1543,13 @@ module.exports.updatetemplate = async function (
                 inline: true,
               },
               {
+                name: `<:carving:1125035809628762143> __**Carving**__(${carvingusers.length})`,
+                value: ` ${carvingusers
+                  .map((user) => "<:carving:1125035809628762143> " + user.name)
+                  .join("\n")} \n\u200B`,
+                inline: true,
+              },
+              {
                 name: `<:chillhowl:1125035788392988702> __**Frost**__(${chillhowleusers.length})`,
                 value: ` ${chillhowleusers
                   .map(
@@ -1436,12 +1559,19 @@ module.exports.updatetemplate = async function (
                 inline: true,
               },
               {
-                name: `<:greatfire:1125446279183486996> __**GreatFire**__(${greatfireusers.length})`,
+                name: `<:greatfire:1125446279183486996> __**Fire**__(${greatfireusers.length})`,
                 value: ` ${greatfireusers
                   .map(
                     (user) => "<:greatfire:1125446279183486996> " + user.name
                   )
                   .join("\n")}`,
+                inline: true,
+              },
+              {
+                name: `<:Lightcaller:1211672001874501632>  __**Lightcaller**__(${lightcallerusers.length})`,
+                value: ` ${lightcallerusers
+                  .map((user) => "<:Lightcaller:1211672001874501632> " + user.name)
+                  .join("\n")} \n\u200B`,
                 inline: true,
               },
               {
@@ -1506,11 +1636,13 @@ module.exports.updatetemplate = async function (
                   mainhealerusers.length +
                   ironrootusers.length +
                   shadowcallerusers.length +
-                  carvingusers.length +
                   realmbreakerusers.length +
+                  earthruneusers.length +
                   spirithunterusers.length +
+                  carvingusers.length +
                   chillhowleusers.length +
                   greatfireusers.length +
+                  lightcallerusers.length +
                   xbowusers.length +
                   fillallusers.length +
                   scoutusers.length
@@ -1601,19 +1733,19 @@ module.exports.updatetemplate = async function (
                 inline: true,
               },
               {
-                name: `<:carving:1125035809628762143> __**Carving**__(${carvingusers.length})`,
-                value: ` ${carvingusers
-                  .map((user) => "<:carving:1125035809628762143> " + user.name)
-                  .join("\n")} \n\u200B`,
-                inline: true,
-              },
-              {
                 name: `<:realmbreaker:1125035797767258213> __**RealmBreaker**__(${realmbreakerusers.length})`,
                 value: ` ${realmbreakerusers
                   .map(
                     (user) => "<:realmbreaker:1125035797767258213> " + user.name
                   )
                   .join("\n")}`,
+                inline: true,
+              },
+              {
+                name: `<:Earthrune:1211671910266699827> __**EarthRune**__(${earthruneusers.length})`,
+                value: ` ${earthruneusers
+                  .map((user) => "<:Earthrune:1211671910266699827> " + user.name)
+                  .join("\n")} \n\u200B`,
                 inline: true,
               },
               {
@@ -1626,6 +1758,13 @@ module.exports.updatetemplate = async function (
                 inline: true,
               },
               {
+                name: `<:carving:1125035809628762143> __**Carving**__(${carvingusers.length})`,
+                value: ` ${carvingusers
+                  .map((user) => "<:carving:1125035809628762143> " + user.name)
+                  .join("\n")} \n\u200B`,
+                inline: true,
+              },
+              {
                 name: `<:chillhowl:1125035788392988702> __**Frost**__(${chillhowleusers.length})`,
                 value: ` ${chillhowleusers
                   .map(
@@ -1635,12 +1774,19 @@ module.exports.updatetemplate = async function (
                 inline: true,
               },
               {
-                name: `<:greatfire:1125446279183486996> __**GreatFire**__(${greatfireusers.length})`,
+                name: `<:greatfire:1125446279183486996> __**Fire**__(${greatfireusers.length})`,
                 value: ` ${greatfireusers
                   .map(
                     (user) => "<:greatfire:1125446279183486996> " + user.name
                   )
                   .join("\n")}`,
+                inline: true,
+              },
+              {
+                name: `<:Lightcaller:1211672001874501632>  __**Lightcaller**__(${lightcallerusers.length})`,
+                value: ` ${lightcallerusers
+                  .map((user) => "<:Lightcaller:1211672001874501632> " + user.name)
+                  .join("\n")} \n\u200B`,
                 inline: true,
               },
               {
@@ -1746,11 +1892,13 @@ module.exports.updatetemplate = async function (
                   mainhealerusers.length +
                   ironrootusers.length +
                   shadowcallerusers.length +
-                  carvingusers.length +
                   realmbreakerusers.length +
+                  earthruneusers.length +
                   spirithunterusers.length +
+                  carvingusers.length +
                   chillhowleusers.length +
                   greatfireusers.length +
+                  lightcallerusers.length +
                   xbowusers.length +
                   fillallusers.length +
                   scoutusers.length
@@ -1841,19 +1989,19 @@ module.exports.updatetemplate = async function (
                 inline: true,
               },
               {
-                name: `<:carving:1125035809628762143> __**Carving**__(${carvingusers.length})`,
-                value: ` ${carvingusers
-                  .map((user) => "<:carving:1125035809628762143> " + user.name)
-                  .join("\n")} \n\u200B`,
-                inline: true,
-              },
-              {
                 name: `<:realmbreaker:1125035797767258213> __**RealmBreaker**__(${realmbreakerusers.length})`,
                 value: ` ${realmbreakerusers
                   .map(
                     (user) => "<:realmbreaker:1125035797767258213> " + user.name
                   )
                   .join("\n")}`,
+                inline: true,
+              },
+              {
+                name: `<:Earthrune:1211671910266699827> __**EarthRune**__(${earthruneusers.length})`,
+                value: ` ${earthruneusers
+                  .map((user) => "<:Earthrune:1211671910266699827> " + user.name)
+                  .join("\n")} \n\u200B`,
                 inline: true,
               },
               {
@@ -1866,6 +2014,13 @@ module.exports.updatetemplate = async function (
                 inline: true,
               },
               {
+                name: `<:carving:1125035809628762143> __**Carving**__(${carvingusers.length})`,
+                value: ` ${carvingusers
+                  .map((user) => "<:carving:1125035809628762143> " + user.name)
+                  .join("\n")} \n\u200B`,
+                inline: true,
+              },
+              {
                 name: `<:chillhowl:1125035788392988702> __**Frost**__(${chillhowleusers.length})`,
                 value: ` ${chillhowleusers
                   .map(
@@ -1875,12 +2030,19 @@ module.exports.updatetemplate = async function (
                 inline: true,
               },
               {
-                name: `<:greatfire:1125446279183486996> __**GreatFire**__(${greatfireusers.length})`,
+                name: `<:greatfire:1125446279183486996> __**Fire**__(${greatfireusers.length})`,
                 value: ` ${greatfireusers
                   .map(
                     (user) => "<:greatfire:1125446279183486996> " + user.name
                   )
                   .join("\n")}`,
+                inline: true,
+              },
+              {
+                name: `<:Lightcaller:1211672001874501632>  __**Lightcaller**__(${lightcallerusers.length})`,
+                value: ` ${lightcallerusers
+                  .map((user) => "<:Lightcaller:1211672001874501632> " + user.name)
+                  .join("\n")} \n\u200B`,
                 inline: true,
               },
               {
