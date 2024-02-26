@@ -1305,7 +1305,7 @@ module.exports.updatetemplate = async function (
                   .map(
                     (user) => "<:realmbreaker:1125035797767258213> " + user.name
                   )
-                  .join("\n")}`,
+                  .join("\n")} \n\u200B`,
                 inline: true,
               },
               {
@@ -1523,7 +1523,7 @@ module.exports.updatetemplate = async function (
                   .map(
                     (user) => "<:realmbreaker:1125035797767258213> " + user.name
                   )
-                  .join("\n")}`,
+                  .join("\n")} \n\u200B`,
                 inline: true,
               },
               {
@@ -1738,7 +1738,7 @@ module.exports.updatetemplate = async function (
                   .map(
                     (user) => "<:realmbreaker:1125035797767258213> " + user.name
                   )
-                  .join("\n")}`,
+                  .join("\n")} \n\u200B`,
                 inline: true,
               },
               {
@@ -1994,7 +1994,7 @@ module.exports.updatetemplate = async function (
                   .map(
                     (user) => "<:realmbreaker:1125035797767258213> " + user.name
                   )
-                  .join("\n")}`,
+                  .join("\n")} \n\u200B`,
                 inline: true,
               },
               {
