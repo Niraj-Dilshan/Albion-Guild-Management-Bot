@@ -218,16 +218,6 @@ module.exports = {
               inline: true,
             },
             {
-              name: "<:spirithunter:1125035741173514302> __**SpritHunter**__(0)",
-              value: " ",
-              inline: true,
-            },
-            {
-              name: "<:carving:1125035809628762143> __**Carving**__(0)",
-              value: "\n\u200B",
-              inline: true,
-            },
-            {
               name: "<:chillhowl:1125035788392988702> __**Frost**__(0)",
               value: "\n\u200B",
               inline: true,
