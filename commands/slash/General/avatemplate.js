@@ -96,8 +96,6 @@ module.exports = {
     const shadowcalleremoji = "1125035825512587274";
     const realmbreakeremoji = "1125035797767258213";
     const earthruneemoji = "1211671910266699827";
-    const spirithunteremoji = "1125035741173514302";
-    const carvingemoji = "1125035809628762143";
     const chillhowlemoji = "1125035788392988702";
     const greatfireemoji = "1125446279183486996";
     const lightcalleremoji = "1211672001874501632";
@@ -116,8 +114,6 @@ module.exports = {
       shadowcalleremoji,
       realmbreakeremoji,
       earthruneemoji,
-      spirithunteremoji,
-      carvingemoji,
       chillhowlemoji,
       greatfireemoji,
       lightcalleremoji,
@@ -308,8 +304,6 @@ module.exports.fetchReactions = async function (message) {
     const shadowcalleremoji = "1125035825512587274";
     const realmbreakeremoji = "1125035797767258213";
     const earthruneemoji = "1211671910266699827";
-    const spirithunteremoji = "1125035741173514302";
-    const carvingemoji = "1125035809628762143";
     const chillhowlemoji = "1125035788392988702";
     const greatfireemoji = "1125446279183486996";
     const lightcalleremoji = "1211672001874501632";
@@ -328,8 +322,6 @@ module.exports.fetchReactions = async function (message) {
     let shadowcallerusers = [];
     let realmbreakerusers = [];
     let earthruneusers = [];
-    let spirithunterusers = [];
-    let carvingusers = [];
     let chillhowleusers = [];
     let greatfireusers = [];
     let lightcallerusers = [];
@@ -469,36 +461,6 @@ module.exports.fetchReactions = async function (message) {
 
       // Fetch server nicknames for the users
       earthruneusers = earthruneUserIds.map((userId) => {
-        const member = message.guild.members.cache.get(userId);
-        const displayName = member
-          ? member.nickname || member.user.username
-          : "Unknown User";
-        return { id: userId, name: displayName };
-      });
-    }
-    if (reactionCollection.has(spirithunteremoji)) {
-      const spirithunterReaction = reactionCollection.get(spirithunteremoji);
-      const spirithunterUserIds = (await spirithunterReaction.users.fetch())
-        .filter((user) => !user.bot)
-        .map((user) => user.id);
-
-      // Fetch server nicknames for the users
-      spirithunterusers = spirithunterUserIds.map((userId) => {
-        const member = message.guild.members.cache.get(userId);
-        const displayName = member
-          ? member.nickname || member.user.username
-          : "Unknown User";
-        return { id: userId, name: displayName };
-      });
-    }
-    if (reactionCollection.has(carvingemoji)) {
-      const carvingReaction = reactionCollection.get(carvingemoji);
-      const carvingUserIds = (await carvingReaction.users.fetch())
-        .filter((user) => !user.bot)
-        .map((user) => user.id);
-
-      // Fetch server nicknames for the users
-      carvingusers = carvingUserIds.map((userId) => {
         const member = message.guild.members.cache.get(userId);
         const displayName = member
           ? member.nickname || member.user.username
@@ -656,8 +618,6 @@ module.exports.fetchReactions = async function (message) {
                 shadowcallerusers.length +
                 realmbreakerusers.length +
                 earthruneusers.length +
-                spirithunterusers.length +
-                carvingusers.length +
                 chillhowleusers.length +
                 greatfireusers.length +
                 lightcallerusers.length +
@@ -691,14 +651,14 @@ module.exports.fetchReactions = async function (message) {
               name: `<:maintank:918772807339474984> __**MainTank**__(${maintankusers.length})`,
               value: ` ${maintankusers
                 .map((user) => "<:maintank:918772807339474984> " + user.name)
-                .join("\n")}`,
+                .join("\n")} \n\u200B`,
               inline: true,
             },
             {
               name: `<:offtank:1125035880541855825> __**OffTank**__(${offtankusers.length})`,
               value: ` ${offtankusers
                 .map((user) => "<:offtank:1125035880541855825> " + user.name)
-                .join("\n")}`,
+                .join("\n")} \n\u200B`,
               inline: true,
             },
             {
@@ -714,7 +674,7 @@ module.exports.fetchReactions = async function (message) {
                 .map(
                   (user) => "<:greatarcane:1125035859067023451> " + user.name
                 )
-                .join("\n")}`,
+                .join("\n")} \n\u200B`,
               inline: true,
             },
             {
@@ -723,7 +683,7 @@ module.exports.fetchReactions = async function (message) {
                 .map(
                   (user) => "<:onehandarcane:1125035868919443466> " + user.name
                 )
-                .join("\n")}`,
+                .join("\n")} \n\u200B`,
               inline: true,
             },
             {
@@ -735,7 +695,7 @@ module.exports.fetchReactions = async function (message) {
               name: `<:ironroot:1125035836723953766> __**IronRoot**__(${ironrootusers.length})`,
               value: `  ${ironrootusers
                 .map((user) => "<:ironroot:1125035836723953766> " + user.name)
-                .join("\n")}`,
+                .join("\n")} \n\u200B`,
               inline: true,
             },
             {
@@ -744,7 +704,7 @@ module.exports.fetchReactions = async function (message) {
                 .map(
                   (user) => "<:shadowcaller:1125035825512587274> " + user.name
                 )
-                .join("\n")}`,
+                .join("\n")} \n\u200B`,
               inline: true,
             },
             {
@@ -753,29 +713,13 @@ module.exports.fetchReactions = async function (message) {
                 .map(
                   (user) => "<:realmbreaker:1125035797767258213> " + user.name
                 )
-                .join("\n")}`,
+                .join("\n")} \n\u200B`,
               inline: true,
             },
             {
               name: `<:Earthrune:1211671910266699827> __**EarthRune**__(${earthruneusers.length})`,
               value: ` ${earthruneusers
                 .map((user) => "<:Earthrune:1211671910266699827> " + user.name)
-                .join("\n")} \n\u200B`,
-              inline: true,
-            },
-            {
-              name: `<:spirithunter:1125035741173514302> __**SpritHunter**__(${spirithunterusers.length})`,
-              value: ` ${spirithunterusers
-                .map(
-                  (user) => "<:spirithunter:1125035741173514302> " + user.name
-                )
-                .join("\n")}`,
-              inline: true,
-            },
-            {
-              name: `<:carving:1125035809628762143> __**Carving**__(${carvingusers.length})`,
-              value: ` ${carvingusers
-                .map((user) => "<:carving:1125035809628762143> " + user.name)
                 .join("\n")} \n\u200B`,
               inline: true,
             },
@@ -790,7 +734,7 @@ module.exports.fetchReactions = async function (message) {
               name: `<:greatfire:1125446279183486996> __**Fire**__(${greatfireusers.length})`,
               value: ` ${greatfireusers
                 .map((user) => "<:greatfire:1125446279183486996> " + user.name)
-                .join("\n")}`,
+                .join("\n")} \n\u200B`,
               inline: true,
             },
             {
@@ -811,7 +755,7 @@ module.exports.fetchReactions = async function (message) {
               name: `<:fillall:1125430605677609033> __**Fill All**__(${fillallusers.length})`,
               value: ` ${fillallusers
                 .map((user) => "<:fillall:1125430605677609033> " + user.name)
-                .join("\n")}`,
+                .join("\n")} \n\u200B`,
               inline: true,
             },
             {
@@ -857,8 +801,6 @@ module.exports.updatetemplate = async function (
     const shadowcalleremoji = "1125035825512587274";
     const realmbreakeremoji = "1125035797767258213";
     const earthruneemoji = "1211671910266699827";
-    const spirithunteremoji = "1125035741173514302";
-    const carvingemoji = "1125035809628762143";
     const chillhowlemoji = "1125035788392988702";
     const greatfireemoji = "1125446279183486996";
     const lightcalleremoji = "1211672001874501632";
@@ -877,8 +819,6 @@ module.exports.updatetemplate = async function (
     let shadowcallerusers = [];
     let realmbreakerusers = [];
     let earthruneusers = [];
-    let spirithunterusers = [];
-    let carvingusers = [];
     let chillhowleusers = [];
     let greatfireusers = [];
     let lightcallerusers = [];
@@ -1018,36 +958,6 @@ module.exports.updatetemplate = async function (
 
       // Fetch server nicknames for the users
       earthruneusers = earthruneUserIds.map((userId) => {
-        const member = message.guild.members.cache.get(userId);
-        const displayName = member
-          ? member.nickname || member.user.username
-          : "Unknown User";
-        return { id: userId, name: displayName };
-      });
-    }
-    if (reactionCollection.has(spirithunteremoji)) {
-      const spirithunterReaction = reactionCollection.get(spirithunteremoji);
-      const spirithunterUserIds = (await spirithunterReaction.users.fetch())
-        .filter((user) => !user.bot)
-        .map((user) => user.id);
-
-      // Fetch server nicknames for the users
-      spirithunterusers = spirithunterUserIds.map((userId) => {
-        const member = message.guild.members.cache.get(userId);
-        const displayName = member
-          ? member.nickname || member.user.username
-          : "Unknown User";
-        return { id: userId, name: displayName };
-      });
-    }
-    if (reactionCollection.has(carvingemoji)) {
-      const carvingReaction = reactionCollection.get(carvingemoji);
-      const carvingUserIds = (await carvingReaction.users.fetch())
-        .filter((user) => !user.bot)
-        .map((user) => user.id);
-
-      // Fetch server nicknames for the users
-      carvingusers = carvingUserIds.map((userId) => {
         const member = message.guild.members.cache.get(userId);
         const displayName = member
           ? member.nickname || member.user.username
@@ -1205,8 +1115,6 @@ module.exports.updatetemplate = async function (
                   shadowcallerusers.length +
                   realmbreakerusers.length +
                   earthruneusers.length +
-                  spirithunterusers.length +
-                  carvingusers.length +
                   chillhowleusers.length +
                   greatfireusers.length +
                   lightcallerusers.length +
@@ -1240,14 +1148,14 @@ module.exports.updatetemplate = async function (
                 name: `<:maintank:918772807339474984> __**MainTank**__(${maintankusers.length})`,
                 value: ` ${maintankusers
                   .map((user) => "<:maintank:918772807339474984> " + user.name)
-                  .join("\n")}`,
+                  .join("\n")} \n\u200B`,
                 inline: true,
               },
               {
                 name: `<:offtank:1125035880541855825> __**OffTank**__(${offtankusers.length})`,
                 value: ` ${offtankusers
                   .map((user) => "<:offtank:1125035880541855825> " + user.name)
-                  .join("\n")}`,
+                  .join("\n")} \n\u200B`,
                 inline: true,
               },
               {
@@ -1265,7 +1173,7 @@ module.exports.updatetemplate = async function (
                   .map(
                     (user) => "<:greatarcane:1125035859067023451> " + user.name
                   )
-                  .join("\n")}`,
+                  .join("\n")} \n\u200B`,
                 inline: true,
               },
               {
@@ -1275,7 +1183,7 @@ module.exports.updatetemplate = async function (
                     (user) =>
                       "<:onehandarcane:1125035868919443466> " + user.name
                   )
-                  .join("\n")}`,
+                  .join("\n")} \n\u200B`,
                 inline: true,
               },
               {
@@ -1287,7 +1195,7 @@ module.exports.updatetemplate = async function (
                 name: `<:ironroot:1125035836723953766> __**IronRoot**__(${ironrootusers.length})`,
                 value: `  ${ironrootusers
                   .map((user) => "<:ironroot:1125035836723953766> " + user.name)
-                  .join("\n")}`,
+                  .join("\n")} \n\u200B`,
                 inline: true,
               },
               {
@@ -1296,7 +1204,7 @@ module.exports.updatetemplate = async function (
                   .map(
                     (user) => "<:shadowcaller:1125035825512587274> " + user.name
                   )
-                  .join("\n")}`,
+                  .join("\n")} \n\u200B`,
                 inline: true,
               },
               {
@@ -1316,22 +1224,6 @@ module.exports.updatetemplate = async function (
                 inline: true,
               },
               {
-                name: `<:spirithunter:1125035741173514302> __**SpritHunter**__(${spirithunterusers.length})`,
-                value: ` ${spirithunterusers
-                  .map(
-                    (user) => "<:spirithunter:1125035741173514302> " + user.name
-                  )
-                  .join("\n")}`,
-                inline: true,
-              },
-              {
-                name: `<:carving:1125035809628762143> __**Carving**__(${carvingusers.length})`,
-                value: ` ${carvingusers
-                  .map((user) => "<:carving:1125035809628762143> " + user.name)
-                  .join("\n")} \n\u200B`,
-                inline: true,
-              },
-              {
                 name: `<:chillhowl:1125035788392988702> __**Frost**__(${chillhowleusers.length})`,
                 value: ` ${chillhowleusers
                   .map(
@@ -1346,7 +1238,7 @@ module.exports.updatetemplate = async function (
                   .map(
                     (user) => "<:greatfire:1125446279183486996> " + user.name
                   )
-                  .join("\n")}`,
+                  .join("\n")} \n\u200B`,
                 inline: true,
               },
               {
@@ -1423,8 +1315,6 @@ module.exports.updatetemplate = async function (
                   shadowcallerusers.length +
                   realmbreakerusers.length +
                   earthruneusers.length +
-                  spirithunterusers.length +
-                  carvingusers.length +
                   chillhowleusers.length +
                   greatfireusers.length +
                   lightcallerusers.length +
@@ -1458,14 +1348,14 @@ module.exports.updatetemplate = async function (
                 name: `<:maintank:918772807339474984> __**MainTank**__(${maintankusers.length})`,
                 value: ` ${maintankusers
                   .map((user) => "<:maintank:918772807339474984> " + user.name)
-                  .join("\n")}`,
+                  .join("\n")} \n\u200B`,
                 inline: true,
               },
               {
                 name: `<:offtank:1125035880541855825> __**OffTank**__(${offtankusers.length})`,
                 value: ` ${offtankusers
                   .map((user) => "<:offtank:1125035880541855825> " + user.name)
-                  .join("\n")}`,
+                  .join("\n")} \n\u200B`,
                 inline: true,
               },
               {
@@ -1483,7 +1373,7 @@ module.exports.updatetemplate = async function (
                   .map(
                     (user) => "<:greatarcane:1125035859067023451> " + user.name
                   )
-                  .join("\n")}`,
+                  .join("\n")} \n\u200B`,
                 inline: true,
               },
               {
@@ -1493,7 +1383,7 @@ module.exports.updatetemplate = async function (
                     (user) =>
                       "<:onehandarcane:1125035868919443466> " + user.name
                   )
-                  .join("\n")}`,
+                  .join("\n")} \n\u200B`,
                 inline: true,
               },
               {
@@ -1505,7 +1395,7 @@ module.exports.updatetemplate = async function (
                 name: `<:ironroot:1125035836723953766> __**IronRoot**__(${ironrootusers.length})`,
                 value: `  ${ironrootusers
                   .map((user) => "<:ironroot:1125035836723953766> " + user.name)
-                  .join("\n")}`,
+                  .join("\n")} \n\u200B`,
                 inline: true,
               },
               {
@@ -1514,7 +1404,7 @@ module.exports.updatetemplate = async function (
                   .map(
                     (user) => "<:shadowcaller:1125035825512587274> " + user.name
                   )
-                  .join("\n")}`,
+                  .join("\n")} \n\u200B`,
                 inline: true,
               },
               {
@@ -1534,22 +1424,6 @@ module.exports.updatetemplate = async function (
                 inline: true,
               },
               {
-                name: `<:spirithunter:1125035741173514302> __**SpritHunter**__(${spirithunterusers.length})`,
-                value: ` ${spirithunterusers
-                  .map(
-                    (user) => "<:spirithunter:1125035741173514302> " + user.name
-                  )
-                  .join("\n")}`,
-                inline: true,
-              },
-              {
-                name: `<:carving:1125035809628762143> __**Carving**__(${carvingusers.length})`,
-                value: ` ${carvingusers
-                  .map((user) => "<:carving:1125035809628762143> " + user.name)
-                  .join("\n")} \n\u200B`,
-                inline: true,
-              },
-              {
                 name: `<:chillhowl:1125035788392988702> __**Frost**__(${chillhowleusers.length})`,
                 value: ` ${chillhowleusers
                   .map(
@@ -1564,7 +1438,7 @@ module.exports.updatetemplate = async function (
                   .map(
                     (user) => "<:greatfire:1125446279183486996> " + user.name
                   )
-                  .join("\n")}`,
+                  .join("\n")} \n\u200B`,
                 inline: true,
               },
               {
@@ -1638,8 +1512,6 @@ module.exports.updatetemplate = async function (
                   shadowcallerusers.length +
                   realmbreakerusers.length +
                   earthruneusers.length +
-                  spirithunterusers.length +
-                  carvingusers.length +
                   chillhowleusers.length +
                   greatfireusers.length +
                   lightcallerusers.length +
@@ -1673,14 +1545,14 @@ module.exports.updatetemplate = async function (
                 name: `<:maintank:918772807339474984> __**MainTank**__(${maintankusers.length})`,
                 value: ` ${maintankusers
                   .map((user) => "<:maintank:918772807339474984> " + user.name)
-                  .join("\n")}`,
+                  .join("\n")} \n\u200B`,
                 inline: true,
               },
               {
                 name: `<:offtank:1125035880541855825> __**OffTank**__(${offtankusers.length})`,
                 value: ` ${offtankusers
                   .map((user) => "<:offtank:1125035880541855825> " + user.name)
-                  .join("\n")}`,
+                  .join("\n")} \n\u200B`,
                 inline: true,
               },
               {
@@ -1698,7 +1570,7 @@ module.exports.updatetemplate = async function (
                   .map(
                     (user) => "<:greatarcane:1125035859067023451> " + user.name
                   )
-                  .join("\n")}`,
+                  .join("\n")} \n\u200B`,
                 inline: true,
               },
               {
@@ -1708,7 +1580,7 @@ module.exports.updatetemplate = async function (
                     (user) =>
                       "<:onehandarcane:1125035868919443466> " + user.name
                   )
-                  .join("\n")}`,
+                  .join("\n")} \n\u200B`,
                 inline: true,
               },
               {
@@ -1720,7 +1592,7 @@ module.exports.updatetemplate = async function (
                 name: `<:ironroot:1125035836723953766> __**IronRoot**__(${ironrootusers.length})`,
                 value: `  ${ironrootusers
                   .map((user) => "<:ironroot:1125035836723953766> " + user.name)
-                  .join("\n")}`,
+                  .join("\n")} \n\u200B`,
                 inline: true,
               },
               {
@@ -1729,7 +1601,7 @@ module.exports.updatetemplate = async function (
                   .map(
                     (user) => "<:shadowcaller:1125035825512587274> " + user.name
                   )
-                  .join("\n")}`,
+                  .join("\n")} \n\u200B`,
                 inline: true,
               },
               {
@@ -1749,22 +1621,6 @@ module.exports.updatetemplate = async function (
                 inline: true,
               },
               {
-                name: `<:spirithunter:1125035741173514302> __**SpritHunter**__(${spirithunterusers.length})`,
-                value: ` ${spirithunterusers
-                  .map(
-                    (user) => "<:spirithunter:1125035741173514302> " + user.name
-                  )
-                  .join("\n")}`,
-                inline: true,
-              },
-              {
-                name: `<:carving:1125035809628762143> __**Carving**__(${carvingusers.length})`,
-                value: ` ${carvingusers
-                  .map((user) => "<:carving:1125035809628762143> " + user.name)
-                  .join("\n")} \n\u200B`,
-                inline: true,
-              },
-              {
                 name: `<:chillhowl:1125035788392988702> __**Frost**__(${chillhowleusers.length})`,
                 value: ` ${chillhowleusers
                   .map(
@@ -1779,7 +1635,7 @@ module.exports.updatetemplate = async function (
                   .map(
                     (user) => "<:greatfire:1125446279183486996> " + user.name
                   )
-                  .join("\n")}`,
+                  .join("\n")} \n\u200B`,
                 inline: true,
               },
               {
@@ -1894,8 +1750,6 @@ module.exports.updatetemplate = async function (
                   shadowcallerusers.length +
                   realmbreakerusers.length +
                   earthruneusers.length +
-                  spirithunterusers.length +
-                  carvingusers.length +
                   chillhowleusers.length +
                   greatfireusers.length +
                   lightcallerusers.length +
@@ -1929,14 +1783,14 @@ module.exports.updatetemplate = async function (
                 name: `<:maintank:918772807339474984> __**MainTank**__(${maintankusers.length})`,
                 value: ` ${maintankusers
                   .map((user) => "<:maintank:918772807339474984> " + user.name)
-                  .join("\n")}`,
+                  .join("\n")} \n\u200B`,
                 inline: true,
               },
               {
                 name: `<:offtank:1125035880541855825> __**OffTank**__(${offtankusers.length})`,
                 value: ` ${offtankusers
                   .map((user) => "<:offtank:1125035880541855825> " + user.name)
-                  .join("\n")}`,
+                  .join("\n")} \n\u200B`,
                 inline: true,
               },
               {
@@ -1954,7 +1808,7 @@ module.exports.updatetemplate = async function (
                   .map(
                     (user) => "<:greatarcane:1125035859067023451> " + user.name
                   )
-                  .join("\n")}`,
+                  .join("\n")} \n\u200B`,
                 inline: true,
               },
               {
@@ -1964,7 +1818,7 @@ module.exports.updatetemplate = async function (
                     (user) =>
                       "<:onehandarcane:1125035868919443466> " + user.name
                   )
-                  .join("\n")}`,
+                  .join("\n")} \n\u200B`,
                 inline: true,
               },
               {
@@ -1976,7 +1830,7 @@ module.exports.updatetemplate = async function (
                 name: `<:ironroot:1125035836723953766> __**IronRoot**__(${ironrootusers.length})`,
                 value: `  ${ironrootusers
                   .map((user) => "<:ironroot:1125035836723953766> " + user.name)
-                  .join("\n")}`,
+                  .join("\n")} \n\u200B`,
                 inline: true,
               },
               {
@@ -1985,7 +1839,7 @@ module.exports.updatetemplate = async function (
                   .map(
                     (user) => "<:shadowcaller:1125035825512587274> " + user.name
                   )
-                  .join("\n")}`,
+                  .join("\n")} \n\u200B`,
                 inline: true,
               },
               {
@@ -2005,22 +1859,6 @@ module.exports.updatetemplate = async function (
                 inline: true,
               },
               {
-                name: `<:spirithunter:1125035741173514302> __**SpritHunter**__(${spirithunterusers.length})`,
-                value: ` ${spirithunterusers
-                  .map(
-                    (user) => "<:spirithunter:1125035741173514302> " + user.name
-                  )
-                  .join("\n")}`,
-                inline: true,
-              },
-              {
-                name: `<:carving:1125035809628762143> __**Carving**__(${carvingusers.length})`,
-                value: ` ${carvingusers
-                  .map((user) => "<:carving:1125035809628762143> " + user.name)
-                  .join("\n")} \n\u200B`,
-                inline: true,
-              },
-              {
                 name: `<:chillhowl:1125035788392988702> __**Frost**__(${chillhowleusers.length})`,
                 value: ` ${chillhowleusers
                   .map(
@@ -2035,7 +1873,7 @@ module.exports.updatetemplate = async function (
                   .map(
                     (user) => "<:greatfire:1125446279183486996> " + user.name
                   )
-                  .join("\n")}`,
+                  .join("\n")} \n\u200B`,
                 inline: true,
               },
               {
