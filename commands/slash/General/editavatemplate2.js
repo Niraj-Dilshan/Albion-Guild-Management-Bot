@@ -2,8 +2,8 @@ const { EmbedBuilder } = require("discord.js");
 const { updatetemplate2 } = require("./avatemplate2");
 
 module.exports = {
-  name: "editavatemplatenew",
-  description: "Edits an AvA template!",
+  name: "editavatemplatetenman",
+  description: "Edit ten man an AvA template!",
   type: 1,
   options: [
     {
