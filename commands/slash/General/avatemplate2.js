@@ -94,8 +94,8 @@ module.exports = {
     const mainhealeremoji = "1125035848841310258";
     const ironrootemoji = "1125035836723953766";
     const shadowcalleremoji = "1125035825512587274";
-    const realmbreakeremoji = "1125035797767258213";
-    const earthruneemoji = "1211671910266699827";
+    const weepingemoji = "1222540055462019302";
+    const blazingemoji = "1125035751722209310";
     const chillhowlemoji = "1125035788392988702";
     const lightcalleremoji = "1211672001874501632";
     const fillallemoji = "1125430605677609033";
@@ -110,8 +110,8 @@ module.exports = {
       onehandarcaneemoji,
       ironrootemoji,
       shadowcalleremoji,
-      realmbreakeremoji,
-      earthruneemoji,
+      weepingemoji,
+      blazingemoji,
       chillhowlemoji,
       lightcalleremoji,
       fillallemoji,
@@ -204,12 +204,12 @@ module.exports = {
               inline: true,
             },
             {
-              name: "<:realmbreaker:1125035797767258213> __**RealmBreaker**__(0)",
+              name: "<:Weeping:1222540055462019302> __**RealmBreaker**__(0)",
               value: "\n\u200B",
               inline: true,
             },
             {
-              name: "<:Earthrune:1211671910266699827> __**EarthRune**__(0)",
+              name: "<:Blazing:1125035751722209310> __**EarthRune**__(0)",
               value: "\n\u200B",
               inline: true,
             },
@@ -278,8 +278,8 @@ module.exports.fetchReactions2 = async function (message) {
     const mainhealeremoji = "1125035848841310258";
     const ironrootemoji = "1125035836723953766";
     const shadowcalleremoji = "1125035825512587274";
-    const realmbreakeremoji = "1125035797767258213";
-    const earthruneemoji = "1211671910266699827";
+    const weepingemoji = "1222540055462019302";
+    const blazingemoji = "1125035751722209310";
     const chillhowlemoji = "1125035788392988702";
     const lightcalleremoji = "1211672001874501632";
     const fillallemoji = "1125430605677609033";
@@ -410,8 +410,8 @@ module.exports.fetchReactions2 = async function (message) {
         return { id: userId, name: displayName };
       });
     }
-    if (reactionCollection.has(realmbreakeremoji)) {
-      const realmbreakerReaction = reactionCollection.get(realmbreakeremoji);
+    if (reactionCollection.has(weepingemoji)) {
+      const realmbreakerReaction = reactionCollection.get(weepingemoji);
       const realmbreakerUserIds = (await realmbreakerReaction.users.fetch())
         .filter((user) => !user.bot)
         .map((user) => user.id);
@@ -425,8 +425,8 @@ module.exports.fetchReactions2 = async function (message) {
         return { id: userId, name: displayName };
       });
     }
-    if (reactionCollection.has(earthruneemoji)) {
-      const earthruneReaction = reactionCollection.get(earthruneemoji);
+    if (reactionCollection.has(blazingemoji)) {
+      const earthruneReaction = reactionCollection.get(blazingemoji);
       const earthruneUserIds = (await earthruneReaction.users.fetch())
         .filter((user) => !user.bot)
         .map((user) => user.id);
@@ -648,18 +648,18 @@ module.exports.fetchReactions2 = async function (message) {
               inline: true,
             },
             {
-              name: `<:realmbreaker:1125035797767258213> __**RealmBreaker**__(${realmbreakerusers.length})`,
+              name: `<:Weeping:1222540055462019302> __**RealmBreaker**__(${realmbreakerusers.length})`,
               value: ` ${realmbreakerusers
                 .map(
-                  (user) => "<:realmbreaker:1125035797767258213> " + user.name
+                  (user) => "<:Weeping:1222540055462019302> " + user.name
                 )
                 .join("\n")} \n\u200B`,
               inline: true,
             },
             {
-              name: `<:Earthrune:1211671910266699827> __**EarthRune**__(${earthruneusers.length})`,
+              name: `<:Blazing:1125035751722209310> __**EarthRune**__(${earthruneusers.length})`,
               value: ` ${earthruneusers
-                .map((user) => "<:Earthrune:1211671910266699827> " + user.name)
+                .map((user) => "<:Blazing:1125035751722209310> " + user.name)
                 .join("\n")} \n\u200B`,
               inline: true,
             },
@@ -725,8 +725,8 @@ module.exports.updatetemplate2 = async function (
     const mainhealeremoji = "1125035848841310258";
     const ironrootemoji = "1125035836723953766";
     const shadowcalleremoji = "1125035825512587274";
-    const realmbreakeremoji = "1125035797767258213";
-    const earthruneemoji = "1211671910266699827";
+    const weepingemoji = "1222540055462019302";
+    const blazingemoji = "1125035751722209310";
     const chillhowlemoji = "1125035788392988702";
     const lightcalleremoji = "1211672001874501632";
     const fillallemoji = "1125430605677609033";
@@ -857,8 +857,8 @@ module.exports.updatetemplate2 = async function (
         return { id: userId, name: displayName };
       });
     }
-    if (reactionCollection.has(realmbreakeremoji)) {
-      const realmbreakerReaction = reactionCollection.get(realmbreakeremoji);
+    if (reactionCollection.has(weepingemoji)) {
+      const realmbreakerReaction = reactionCollection.get(weepingemoji);
       const realmbreakerUserIds = (await realmbreakerReaction.users.fetch())
         .filter((user) => !user.bot)
         .map((user) => user.id);
@@ -872,8 +872,8 @@ module.exports.updatetemplate2 = async function (
         return { id: userId, name: displayName };
       });
     }
-    if (reactionCollection.has(earthruneemoji)) {
-      const earthruneReaction = reactionCollection.get(earthruneemoji);
+    if (reactionCollection.has(blazingemoji)) {
+      const earthruneReaction = reactionCollection.get(blazingemoji);
       const earthruneUserIds = (await earthruneReaction.users.fetch())
         .filter((user) => !user.bot)
         .map((user) => user.id);
@@ -1098,18 +1098,18 @@ module.exports.updatetemplate2 = async function (
                 inline: true,
               },
               {
-                name: `<:realmbreaker:1125035797767258213> __**RealmBreaker**__(${realmbreakerusers.length})`,
+                name: `<:Weeping:1222540055462019302> __**RealmBreaker**__(${realmbreakerusers.length})`,
                 value: ` ${realmbreakerusers
                   .map(
-                    (user) => "<:realmbreaker:1125035797767258213> " + user.name
+                    (user) => "<:Weeping:1222540055462019302> " + user.name
                   )
                   .join("\n")} \n\u200B`,
                 inline: true,
               },
               {
-                name: `<:Earthrune:1211671910266699827> __**EarthRune**__(${earthruneusers.length})`,
+                name: `<:Blazing:1125035751722209310> __**EarthRune**__(${earthruneusers.length})`,
                 value: ` ${earthruneusers
-                  .map((user) => "<:Earthrune:1211671910266699827> " + user.name)
+                  .map((user) => "<:Blazing:1125035751722209310> " + user.name)
                   .join("\n")} \n\u200B`,
                 inline: true,
               },
@@ -1280,18 +1280,18 @@ module.exports.updatetemplate2 = async function (
                 inline: true,
               },
               {
-                name: `<:realmbreaker:1125035797767258213> __**RealmBreaker**__(${realmbreakerusers.length})`,
+                name: `<:Weeping:1222540055462019302> __**RealmBreaker**__(${realmbreakerusers.length})`,
                 value: ` ${realmbreakerusers
                   .map(
-                    (user) => "<:realmbreaker:1125035797767258213> " + user.name
+                    (user) => "<:Weeping:1222540055462019302> " + user.name
                   )
                   .join("\n")} \n\u200B`,
                 inline: true,
               },
               {
-                name: `<:Earthrune:1211671910266699827> __**EarthRune**__(${earthruneusers.length})`,
+                name: `<:Blazing:1125035751722209310> __**EarthRune**__(${earthruneusers.length})`,
                 value: ` ${earthruneusers
-                  .map((user) => "<:Earthrune:1211671910266699827> " + user.name)
+                  .map((user) => "<:Blazing:1125035751722209310> " + user.name)
                   .join("\n")} \n\u200B`,
                 inline: true,
               },
@@ -1459,18 +1459,18 @@ module.exports.updatetemplate2 = async function (
                 inline: true,
               },
               {
-                name: `<:realmbreaker:1125035797767258213> __**RealmBreaker**__(${realmbreakerusers.length})`,
+                name: `<:Weeping:1222540055462019302> __**RealmBreaker**__(${realmbreakerusers.length})`,
                 value: ` ${realmbreakerusers
                   .map(
-                    (user) => "<:realmbreaker:1125035797767258213> " + user.name
+                    (user) => "<:Weeping:1222540055462019302> " + user.name
                   )
                   .join("\n")} \n\u200B`,
                 inline: true,
               },
               {
-                name: `<:Earthrune:1211671910266699827> __**EarthRune**__(${earthruneusers.length})`,
+                name: `<:Blazing:1125035751722209310> __**EarthRune**__(${earthruneusers.length})`,
                 value: ` ${earthruneusers
-                  .map((user) => "<:Earthrune:1211671910266699827> " + user.name)
+                  .map((user) => "<:Blazing:1125035751722209310> " + user.name)
                   .join("\n")} \n\u200B`,
                 inline: true,
               },
@@ -1679,18 +1679,18 @@ module.exports.updatetemplate2 = async function (
                 inline: true,
               },
               {
-                name: `<:realmbreaker:1125035797767258213> __**RealmBreaker**__(${realmbreakerusers.length})`,
+                name: `<:Weeping:1222540055462019302> __**RealmBreaker**__(${realmbreakerusers.length})`,
                 value: ` ${realmbreakerusers
                   .map(
-                    (user) => "<:realmbreaker:1125035797767258213> " + user.name
+                    (user) => "<:Weeping:1222540055462019302> " + user.name
                   )
                   .join("\n")} \n\u200B`,
                 inline: true,
               },
               {
-                name: `<:Earthrune:1211671910266699827> __**EarthRune**__(${earthruneusers.length})`,
+                name: `<:Blazing:1125035751722209310> __**EarthRune**__(${earthruneusers.length})`,
                 value: ` ${earthruneusers
-                  .map((user) => "<:Earthrune:1211671910266699827> " + user.name)
+                  .map((user) => "<:Blazing:1125035751722209310> " + user.name)
                   .join("\n")} \n\u200B`,
                 inline: true,
               },
