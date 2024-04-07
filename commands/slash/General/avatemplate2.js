@@ -204,12 +204,12 @@ module.exports = {
               inline: true,
             },
             {
-              name: "<:Weeping:1222540055462019302> __**RealmBreaker**__(0)",
+              name: "<:Weeping:1222540055462019302> __**Weeping**__(0)",
               value: "\n\u200B",
               inline: true,
             },
             {
-              name: "<:Blazing:1125035751722209310> __**EarthRune**__(0)",
+              name: "<:Blazing:1125035751722209310> __**Blazing**__(0)",
               value: "\n\u200B",
               inline: true,
             },
@@ -648,7 +648,7 @@ module.exports.fetchReactions2 = async function (message) {
               inline: true,
             },
             {
-              name: `<:Weeping:1222540055462019302> __**RealmBreaker**__(${realmbreakerusers.length})`,
+              name: `<:Weeping:1222540055462019302> __**Weeping**__(${realmbreakerusers.length})`,
               value: ` ${realmbreakerusers
                 .map(
                   (user) => "<:Weeping:1222540055462019302> " + user.name
@@ -657,7 +657,7 @@ module.exports.fetchReactions2 = async function (message) {
               inline: true,
             },
             {
-              name: `<:Blazing:1125035751722209310> __**EarthRune**__(${earthruneusers.length})`,
+              name: `<:Blazing:1125035751722209310> __**Blazing**__(${earthruneusers.length})`,
               value: ` ${earthruneusers
                 .map((user) => "<:Blazing:1125035751722209310> " + user.name)
                 .join("\n")} \n\u200B`,
@@ -1098,7 +1098,7 @@ module.exports.updatetemplate2 = async function (
                 inline: true,
               },
               {
-                name: `<:Weeping:1222540055462019302> __**RealmBreaker**__(${realmbreakerusers.length})`,
+                name: `<:Weeping:1222540055462019302> __**Weeping**__(${realmbreakerusers.length})`,
                 value: ` ${realmbreakerusers
                   .map(
                     (user) => "<:Weeping:1222540055462019302> " + user.name
@@ -1107,7 +1107,7 @@ module.exports.updatetemplate2 = async function (
                 inline: true,
               },
               {
-                name: `<:Blazing:1125035751722209310> __**EarthRune**__(${earthruneusers.length})`,
+                name: `<:Blazing:1125035751722209310> __**Blazing**__(${earthruneusers.length})`,
                 value: ` ${earthruneusers
                   .map((user) => "<:Blazing:1125035751722209310> " + user.name)
                   .join("\n")} \n\u200B`,
@@ -1280,7 +1280,7 @@ module.exports.updatetemplate2 = async function (
                 inline: true,
               },
               {
-                name: `<:Weeping:1222540055462019302> __**RealmBreaker**__(${realmbreakerusers.length})`,
+                name: `<:Weeping:1222540055462019302> __**Weeping**__(${realmbreakerusers.length})`,
                 value: ` ${realmbreakerusers
                   .map(
                     (user) => "<:Weeping:1222540055462019302> " + user.name
@@ -1289,7 +1289,7 @@ module.exports.updatetemplate2 = async function (
                 inline: true,
               },
               {
-                name: `<:Blazing:1125035751722209310> __**EarthRune**__(${earthruneusers.length})`,
+                name: `<:Blazing:1125035751722209310> __**Blazing**__(${earthruneusers.length})`,
                 value: ` ${earthruneusers
                   .map((user) => "<:Blazing:1125035751722209310> " + user.name)
                   .join("\n")} \n\u200B`,
@@ -1459,7 +1459,7 @@ module.exports.updatetemplate2 = async function (
                 inline: true,
               },
               {
-                name: `<:Weeping:1222540055462019302> __**RealmBreaker**__(${realmbreakerusers.length})`,
+                name: `<:Weeping:1222540055462019302> __**Weeping**__(${realmbreakerusers.length})`,
                 value: ` ${realmbreakerusers
                   .map(
                     (user) => "<:Weeping:1222540055462019302> " + user.name
@@ -1468,7 +1468,7 @@ module.exports.updatetemplate2 = async function (
                 inline: true,
               },
               {
-                name: `<:Blazing:1125035751722209310> __**EarthRune**__(${earthruneusers.length})`,
+                name: `<:Blazing:1125035751722209310> __**Blazing**__(${earthruneusers.length})`,
                 value: ` ${earthruneusers
                   .map((user) => "<:Blazing:1125035751722209310> " + user.name)
                   .join("\n")} \n\u200B`,
@@ -1679,7 +1679,7 @@ module.exports.updatetemplate2 = async function (
                 inline: true,
               },
               {
-                name: `<:Weeping:1222540055462019302> __**RealmBreaker**__(${realmbreakerusers.length})`,
+                name: `<:Weeping:1222540055462019302> __**Weeping**__(${realmbreakerusers.length})`,
                 value: ` ${realmbreakerusers
                   .map(
                     (user) => "<:Weeping:1222540055462019302> " + user.name
@@ -1688,7 +1688,7 @@ module.exports.updatetemplate2 = async function (
                 inline: true,
               },
               {
-                name: `<:Blazing:1125035751722209310> __**EarthRune**__(${earthruneusers.length})`,
+                name: `<:Blazing:1125035751722209310> __**Blazing**__(${earthruneusers.length})`,
                 value: ` ${earthruneusers
                   .map((user) => "<:Blazing:1125035751722209310> " + user.name)
                   .join("\n")} \n\u200B`,
