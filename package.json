@@ -10,7 +10,7 @@
   "author": "INFINITY",
   "license": "ISC",
   "dependencies": {
-    "axios": "^1.6.0",
+    "axios": "^1.7.4",
     "better-sqlite3": "^9.4.3",
     "colors": "^1.4.0",
     "discord-api-types": "^0.36.2",
