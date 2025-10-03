@@ -95,6 +95,11 @@ process.on("unhandledRejection", async (err, promise) => {
 
 client.on("messageReactionAdd", async (reaction, user) => {
   if (user.bot) return;
+
+  const Event = require('./database/models/Event');
+  const event = await Event.findOne({ messageId: reaction.message.id });
+  if (event) return;
+
   // mongodb
   const db = mongoose.connection.useDb("AvaRaids");
   const collectionmassage = db.collection("avaraids");
