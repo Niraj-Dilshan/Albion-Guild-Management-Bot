@@ -56,57 +56,88 @@ module.exports = {
     DEFAULT_MEMBER_PERMISSIONS: "SendMessages",
   },
   run: async (client, interaction, config, db) => {
-    const title = interaction.options.getString("title");
-    const description = interaction.options.getString("description");
-    const eventType = interaction.options.getString("type");
-    const startTimeInput = interaction.options.getString("start_time");
-    const maxAttendees = interaction.options.getInteger("max_attendees");
+    try {
+      await interaction.deferReply({ ephemeral: true });
 
-    const startTime = moment.tz(startTimeInput, "YYYY-MM-DD HH:mm", "Etc/UTC");
+      const title = interaction.options.getString("title");
+      const description = interaction.options.getString("description");
+      const eventType = interaction.options.getString("type");
+      const startTimeInput = interaction.options.getString("start_time");
+      const maxAttendees = interaction.options.getInteger("max_attendees");
 
-    if (!startTime.isValid()) {
-        return interaction.reply({
-            content: "Invalid date format. Please use YYYY-MM-DD HH:MM.",
-            ephemeral: true,
+      if (title.length > 256) {
+        return interaction.editReply({
+          content: `The event title cannot exceed 256 characters. Your title is ${title.length} characters long.`,
         });
-    }
+      }
 
-    const eventEmbed = new EmbedBuilder()
-      .setTitle(title)
-      .setDescription(description)
-      .setColor("Blue")
-      .addFields(
-        { name: "Event Type", value: eventType, inline: true },
-        { name: "Start Time", value: `<t:${startTime.unix()}:F>`, inline: true },
-        { name: "Max Attendees", value: maxAttendees.toString(), inline: true },
-        { name: "✅ Attendees (0)", value: "None", inline: false },
-        { name: "❔ Maybes (0)", value: "None", inline: false },
-        { name: "❌ Declined (0)", value: "None", inline: false }
-      )
-      .setFooter({ text: `Event created by ${interaction.user.username}`});
+      if (description.length > 4096) {
+        return interaction.editReply({
+          content: `The event description cannot exceed 4096 characters. Your description is ${description.length} characters long.`,
+        });
+      }
 
-    const message = await interaction.channel.send({ embeds: [eventEmbed] });
+      const startTime = moment.tz(startTimeInput, "YYYY-MM-DD HH:mm", "Etc/UTC");
 
-    await message.react("✅");
-    await message.react("❔");
-    await message.react("❌");
+      if (!startTime.isValid()) {
+        return interaction.editReply({
+          content: "Invalid date format. Please use YYYY-MM-DD HH:MM.",
+        });
+      }
 
-    const newEvent = new Event({
+      const eventEmbed = new EmbedBuilder()
+        .setTitle(title)
+        .setDescription(description)
+        .setColor("Blue")
+        .addFields(
+          { name: "Event Type", value: eventType, inline: true },
+          { name: "Start Time", value: `<t:${startTime.unix()}:F>`, inline: true },
+          { name: "Max Attendees", value: maxAttendees.toString(), inline: true },
+          { name: "✅ Attendees (0)", value: "None", inline: false },
+          { name: "❔ Maybes (0)", value: "None", inline: false },
+          { name: "❌ Declined (0)", value: "None", inline: false }
+        )
+        .setFooter({ text: `Event created by ${interaction.user.username}` });
+
+      const newEvent = new Event({
         guildId: interaction.guild.id,
-        messageId: message.id,
+        channelId: interaction.channelId,
         title,
         description,
         eventType,
         startTime: startTime.toDate(),
         maxAttendees,
         creator: interaction.user.id,
-    });
+      });
 
-    await newEvent.save();
+      await newEvent.save();
 
-    interaction.reply({
+      const message = await interaction.channel.send({ embeds: [eventEmbed] });
+
+      newEvent.messageId = message.id;
+      await newEvent.save();
+
+      await Promise.all([
+        message.react("✅"),
+        message.react("❔"),
+        message.react("❌"),
+      ]);
+
+      await interaction.editReply({
         content: "Event created successfully!",
-        ephemeral: true,
-    });
+      });
+    } catch (error) {
+      console.error("Error creating event:", error);
+      if (interaction.deferred || interaction.replied) {
+        await interaction.editReply({
+          content: "An error occurred while creating the event. Please try again later.",
+        });
+      } else {
+        await interaction.reply({
+          content: "An error occurred while creating the event. Please try again later.",
+          ephemeral: true,
+        });
+      }
+    }
   },
 };
