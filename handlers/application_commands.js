@@ -1,24 +1,25 @@
 const client = require("../index");
-const { PermissionsBitField, Routes, REST, User } = require("discord.js");
-const { readdirSync } = require("fs");
+const { PermissionsBitField, Routes, REST } = require("discord.js");
+const { glob } = require("glob");
+const path = require("path");
 const colors = require("colors");
 
-module.exports = (client, config) => {
+module.exports = async (client, config) => {
   console.log("0------------------| Application commands Handler:".blue);
 
-  let commands = [];
+  const commands = [];
 
   // Slash commands handler:
-  readdirSync("./commands/slash/").forEach((dir) => {
-    console.log("[!] Started loading slash commands...".yellow);
-    const SlashCommands = readdirSync(`./commands/slash/${dir}`).filter(
-      (file) => file.endsWith(".js")
-    );
+  console.log("[!] Started loading slash commands...".yellow);
+  const slashCommands = await glob(
+    path.join(__dirname, "../commands/slash/**/*.js")
+  );
 
-    for (let file of SlashCommands) {
-      let pull = require(`../commands/slash/${dir}/${file}`);
+  for (const file of slashCommands) {
+    try {
+      const pull = require(file);
 
-      if ((pull.name, pull.description, pull.type == 1)) {
+      if (pull.name && pull.description && pull.type === 1) {
         client.slash_commands.set(pull.name, pull);
         console.log(
           `[HANDLER - SLASH] Loaded a file: ${pull.name} (#${client.slash_commands.size})`
@@ -30,11 +31,11 @@ module.exports = (client, config) => {
           description: pull.description,
           type: pull.type || 1,
           options: pull.options ? pull.options : null,
-          default_permission: pull.permissions.DEFAULT_PERMISSIONS
+          default_permission: pull.permissions?.DEFAULT_PERMISSIONS
             ? pull.permissions.DEFAULT_PERMISSIONS
             : null,
           default_member_permissions: pull.permissions
-            .DEFAULT_MEMBER_PERMISSIONS
+            ?.DEFAULT_MEMBER_PERMISSIONS
             ? PermissionsBitField.resolve(
                 pull.permissions.DEFAULT_MEMBER_PERMISSIONS
               ).toString()
@@ -45,22 +46,23 @@ module.exports = (client, config) => {
           `[HANDLER - SLASH] Couldn't load the file ${file}, missing module name value, description, or type isn't 1.`
             .red
         );
-        continue;
       }
+    } catch (error) {
+      console.error(`[HANDLER - SLASH] Error loading file ${file}: ${error}`.red);
     }
-  });
+  }
 
   // User commands handler:
-  readdirSync("./commands/user/").forEach((dir) => {
-    console.log("[!] Started loading user commands...".yellow);
-    const UserCommands = readdirSync(`./commands/user/${dir}`).filter((file) =>
-      file.endsWith(".js")
-    );
+  console.log("[!] Started loading user commands...".yellow);
+  const userCommands = await glob(
+    path.join(__dirname, "../commands/user/**/*.js")
+  );
 
-    for (let file of UserCommands) {
-      let pull = require(`../commands/user/${dir}/${file}`);
+  for (const file of userCommands) {
+    try {
+      const pull = require(file);
 
-      if ((pull.name, pull.type == 2)) {
+      if (pull.name && pull.type === 2) {
         client.user_commands.set(pull.name, pull);
         console.log(
           `[HANDLER - USER] Loaded a file: ${pull.name} (#${client.user_commands.size})`
@@ -76,25 +78,26 @@ module.exports = (client, config) => {
           `[HANDLER - USER] Couldn't load the file ${file}, missing module name value or type isn't 2.`
             .red
         );
-        continue;
       }
+    } catch (error) {
+      console.error(`[HANDLER - USER] Error loading file ${file}: ${error}`.red);
     }
-  });
+  }
 
   // Message commands handler:
-  readdirSync("./commands/message/").forEach((dir) => {
-    console.log("[!] Started loading message commands...".yellow);
-    const UserCommands = readdirSync(`./commands/message/${dir}`).filter(
-      (file) => file.endsWith(".js")
-    );
+  console.log("[!] Started loading message commands...".yellow);
+  const messageCommands = await glob(
+    path.join(__dirname, "../commands/message/**/*.js")
+  );
 
-    for (let file of UserCommands) {
-      let pull = require(`../commands/message/${dir}/${file}`);
+  for (const file of messageCommands) {
+    try {
+      const pull = require(file);
 
-      if ((pull.name, pull.type == 3)) {
+      if (pull.name && pull.type === 3) {
         client.message_commands.set(pull.name, pull);
         console.log(
-          `[HANDLER - MESSAGE] Loaded a file: ${pull.name} (#${client.user_commands.size})`
+          `[HANDLER - MESSAGE] Loaded a file: ${pull.name} (#${client.message_commands.size})`
             .brightGreen
         );
 
@@ -104,24 +107,19 @@ module.exports = (client, config) => {
         });
       } else {
         console.log(
-          `[HANDLER - MESSAGE] Couldn't load the file ${file}, missing module name value or type isn't 2.`
+          `[HANDLER - MESSAGE] Couldn't load the file ${file}, missing module name value or type isn't 3.`
             .red
         );
-        continue;
       }
+    } catch (error) {
+      console.error(
+        `[HANDLER - MESSAGE] Error loading file ${file}: ${error}`.red
+      );
     }
-  });
-
-  // Registering all the application commands:
-  if (!config.Client.ID) {
-    console.log(
-      "[CRASH] You need to provide your bot ID in config.js!".red + "\n"
-    );
-    return process.exit();
   }
 
   const rest = new REST({ version: "10" }).setToken(
-    config.Client.TOKEN || process.env.TOKEN
+    config.Client.TOKEN || process.env.BotToken
   );
 
   (async () => {
