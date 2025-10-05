@@ -59,6 +59,30 @@ module.exports = {
               guildName: guildname,
             });
           }
+          // Auto-assign registered role if configured
+          try {
+            const roleId = config.Roles && config.Roles.REGISTERED_ROLE;
+            if (roleId) {
+              const role = interaction.guild.roles.cache.get(roleId);
+              if (!role) {
+                console.log(`Configured registered role ID ${roleId} not found in guild ${guildid}`);
+              } else {
+                // Check bot permissions and role hierarchy
+                const botMember = interaction.guild.members.me || interaction.guild.members.cache.get(client.user.id);
+                if (!botMember) {
+                  console.log('Bot member object not found when attempting to assign registered role.');
+                } else if (!botMember.permissions.has('ManageRoles')) {
+                  console.log('Bot lacks Manage Roles permission, cannot assign registered role.');
+                } else if (role.position >= botMember.roles.highest.position) {
+                  console.log('Configured role is higher or equal to bot highest role, cannot assign.');
+                } else {
+                  await interaction.member.roles.add(roleId).catch(err => console.log('Failed to add registered role:', err));
+                }
+              }
+            }
+          } catch (err) {
+            console.log('Error while assigning registered role:', err);
+          }
         } else {
           await interaction.reply({
             embeds: [

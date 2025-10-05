@@ -15,6 +15,11 @@ module.exports = {
     ADMINS: admins, // THE ADMINS ID.
   },
 
+  Roles: {
+    // Optional: set this to a role ID in your .env to auto-assign when a user registers
+    REGISTERED_ROLE: process.env.RegisteredRole || null,
+  },
+
   Handlers: {
     MONGO: mongodb, // YOUR MONGO URI. (USE THIS ONLY IN VSCODE)
   },
