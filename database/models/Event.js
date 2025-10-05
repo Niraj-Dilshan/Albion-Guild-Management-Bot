@@ -17,5 +17,6 @@ const eventSchema = new mongoose.Schema({
 });
 
 eventSchema.index({ startTime: 1, guildId: 1 });
+eventSchema.index({ messageId: 1 });
 
 module.exports = mongoose.model('Event', eventSchema);

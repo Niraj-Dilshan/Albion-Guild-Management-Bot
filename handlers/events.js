@@ -1,15 +1,15 @@
-const { readdirSync } = require("fs");
+const { glob } = require("glob");
+const path = require("path");
 const colors = require("colors");
 
-module.exports = (client) => {
+module.exports = async (client) => {
   console.log("0------------------| Events Handler:".blue);
 
-  readdirSync("./events/").forEach((dir) => {
-    const events = readdirSync(`./events/${dir}`).filter((file) =>
-      file.endsWith(".js")
-    );
-    for (let file of events) {
-      let pull = require(`../events/${dir}/${file}`);
+  const eventFiles = await glob(path.join(__dirname, "../events/**/*.js"));
+
+  for (const file of eventFiles) {
+    try {
+      const pull = require(file);
       if (pull.name) {
         client.events.set(pull.name, pull);
         console.log(
@@ -17,11 +17,12 @@ module.exports = (client) => {
         );
       } else {
         console.log(
-          `[HANDLER - EVENTS] Couldn't load the file ${file}. missing name or aliases.`
+          `[HANDLER - EVENTS] Couldn't load the file ${file}. missing name.`
             .red
         );
-        continue;
       }
+    } catch (error) {
+      console.error(`[HANDLER - EVENTS] Error loading file ${file}: ${error}`.red);
     }
-  });
+  }
 };

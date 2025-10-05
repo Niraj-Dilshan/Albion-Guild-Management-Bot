@@ -10,5 +10,6 @@ const guildBankTransactionSchema = new mongoose.Schema({
 });
 
 guildBankTransactionSchema.index({ guildId: 1, timestamp: -1 });
+guildBankTransactionSchema.index({ guildId: 1, userId: 1 });
 
 module.exports = mongoose.model('GuildBankTransaction', guildBankTransactionSchema);
